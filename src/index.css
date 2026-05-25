@@ -1,0 +1,154 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Space Grotesk", "Plus Jakarta Sans", sans-serif;
+  --font-mono: "Space Grotesk", ui-monospace, monospace;
+
+  /* === DEEP ESPRESSO PALETTE (cards premium sobre fondo claro cobre) === */
+  --color-brand-black: #0a0604;        /* casi negro chocolate */
+  --color-brand-dark: #15100b;         /* espresso oscuro - cards principales */
+  --color-brand-brown: #2a1f17;        /* chocolate medio - botones secundarios */
+
+  /* === ACENTOS COBRE / BRONCE MATE (armoniza con la puerta sepia) === */
+  --color-brand-terracotta: #a86b3c;   /* cobre mate */
+  --color-brand-bronze: #c9803b;       /* bronce cálido */
+  --color-brand-coral: #d99860;        /* cobre claro luminoso */
+
+  /* === TEXTOS Y NEUTROS === */
+  --color-brand-peach: #c9b7a3;        /* crema cálida - texto secundario */
+  --color-brand-sand: #ede0d0;         /* crema clara - texto destacado */
+  --color-brand-ivory: #f7efe3;        /* casi blanco crema */
+  --color-brand-white: #ffffff;
+
+  /* === ESCALA TONAL COBRE/MARRÓN (50-900) - usada por la franja lateral vertical === */
+  --color-brand-50: #FAFAF7;
+  --color-brand-100: #FBF7D9;
+  --color-brand-200: #F2D7AE;
+  --color-brand-300: #E9B495;
+  --color-brand-400: #E3946B;
+  --color-brand-500: #AA6942;
+  --color-brand-600: #974B19;
+  --color-brand-700: #35190E;
+  --color-brand-800: #1D150D;
+  --color-brand-900: #040505;
+}
+
+/* Custom scrollbar in copper tones */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0a0604;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #2a1f17;
+  border-radius: 4px;
+  border: 2px solid #0a0604;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a86b3c;
+}
+
+html {
+  scroll-behavior: smooth;
+  background-color: #1a1208;
+  color: #ffffff;
+  font-family: var(--font-sans);
+}
+
+body {
+  overflow-x: hidden;
+  background-color: transparent;
+}
+
+/* Global Background Image - Puerta furgoneta sepia/cobre */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  background-image: url("/foto7.png");
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+/* Subtle dark overlay on top of the image to give cards more contrast */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse at center, rgba(10, 6, 4, 0.15) 0%, rgba(10, 6, 4, 0.45) 100%),
+    linear-gradient(to bottom, rgba(10, 6, 4, 0.25) 0%, rgba(10, 6, 4, 0.35) 50%, rgba(10, 6, 4, 0.55) 100%);
+}
+
+/* Glassmorphism utility classes - darker for contrast over light bg */
+.glass-panel {
+  background: rgba(21, 16, 11, 0.88);
+  backdrop-filter: blur(14px);
+  border: 1px solid rgba(201, 128, 59, 0.18);
+  box-shadow: 0 24px 60px -20px rgba(0, 0, 0, 0.6);
+}
+
+.glass-panel-light {
+  background: rgba(42, 31, 23, 0.55);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(237, 224, 208, 0.10);
+}
+
+/* Premium dark card - solid look that floats over the photo */
+.premium-card {
+  background: linear-gradient(180deg, rgba(21, 16, 11, 0.96) 0%, rgba(10, 6, 4, 0.96) 100%);
+  border: 1px solid rgba(201, 128, 59, 0.20);
+  box-shadow:
+    0 30px 70px -20px rgba(0, 0, 0, 0.7),
+    inset 0 1px 0 rgba(237, 224, 208, 0.05);
+}
+
+.text-gradient-gold {
+  background: linear-gradient(to bottom, #ede0d0 20%, #c9803b 90%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-gradient-coral {
+  background: linear-gradient(135deg, #f7efe3 0%, #d99860 45%, #a86b3c 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.border-gradient-gold {
+  border-image: linear-gradient(to right, #a86b3c, #c9803b, #ede0d0) 1;
+}
+
+.nando-bg {
+  background-color: transparent;
+}
+
+/* Headings & text floating directly over the background image - improve legibility */
+.heading-on-bg {
+  text-shadow:
+    0 2px 16px rgba(10, 6, 4, 0.85),
+    0 1px 3px rgba(10, 6, 4, 0.6);
+}
+
+.text-on-bg {
+  text-shadow: 0 1px 8px rgba(10, 6, 4, 0.7);
+}
+
+/* Floating van image - drop shadow respects PNG alpha */
+.hero-van-floating img {
+  filter: drop-shadow(0 8px 24px rgba(168, 107, 60, 0.4)) drop-shadow(0 2px 8px rgba(0, 0, 0, 0.45));
+}
