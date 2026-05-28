@@ -82,7 +82,7 @@ export default function Reviews() {
         {/* Header Block Scroll Trigger */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center mb-16">
           
-          <div className="lg:col-span-8 text-left space-y-4">
+          <div className="lg:col-span-7 text-center flex flex-col items-center space-y-4 px-3">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -105,7 +105,7 @@ export default function Reviews() {
               initial={{ opacity: 0, y: 15 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-100px" }}
-              className="text-brand-sand text-xs sm:text-sm max-w-xl text-on-bg"
+              className="text-[0.95rem] sm:text-base font-sans font-bold max-w-xl text-on-bg"
             >
               La transparencia es nuestro pilar fundamental. Aquí puede consultar las valoraciones reales importadas directamente de nuestro perfil de Google, así como redactar su propia valoración.
             </motion.p>

@@ -104,7 +104,7 @@ export default function Hero({ onOpenCalculator, phone }: HeroProps) {
                 className="font-display font-extrabold text-[44px] sm:text-[64px] md:text-[76px] leading-[0.9] uppercase tracking-tighter"
               >
                 MUDANZAS
-                <span className="block text-brand-coral font-sans font-light tracking-[0.25em] text-2xl sm:text-5xl md:text-6xl mt-1 select-none">
+                <span className="block text-brand-coral font-sans font-light tracking-[0.25em] text-2xl sm:text-5xl xl:text-6xl mt-1 select-none">
                   Y TRANSPORTES.
                 </span>
               </motion.h1>
@@ -113,7 +113,7 @@ export default function Hero({ onOpenCalculator, phone }: HeroProps) {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.2 }}
-                className="text-base sm:text-lg  max-w-2xl leading-relaxed font-sans font-medium"
+                className="text-base font-semibold sm:text-lg  max-w-2xl leading-relaxed font-sans font-medium"
               >
                 Hacemos realidad su traslado sin estrés. Especialistas en mudanzas del hogar, locales y nacionales, montaje meticuloso de muebles, vaciado rápido de inmuebles y portes express garantizados al mejor precio nacional.
               </motion.p>
@@ -205,7 +205,7 @@ export default function Hero({ onOpenCalculator, phone }: HeroProps) {
                   <h3 className="font-display uppercase font-bold bg-gradient-to-r from-brand-terracotta to-brand-coral bg-clip-text text-transparent text-lg leading-snug mt-3">
                     {activePhoto.title}
                   </h3>
-                  <p className="text-medium leading-relaxed mt-1 line-clamp-4">
+                  <p className="text-sm sm:text-base font-semibold leading-relaxed mt-1 line-clamp-4">
                     {activePhoto.desc}
                   </p>
                 </motion.div>
