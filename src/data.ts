@@ -22,7 +22,7 @@ export const SERVICES_DATA: MovingService[] = [
     basePrice: 280,
     priceDescriptor: "precio base medio",
     iconName: "Truck",
-    bgImage: "https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?auto=format&fit=crop&q=80&w=800"
+    bgImage: ("../public/Carrousel-Nando-1.png"),
   },
   {
     id: "montaje-muebles",
@@ -40,7 +40,7 @@ export const SERVICES_DATA: MovingService[] = [
     basePrice: 45,
     priceDescriptor: "por hora / operario",
     iconName: "Wrench",
-    bgImage: "https://images.unsplash.com/photo-1531403009284-440f080d1e12?auto=format&fit=crop&q=80&w=800"
+    bgImage: ("../public/Carrousel-Nando-2.png"),
   },
   {
     id: "vaciados",
@@ -58,7 +58,7 @@ export const SERVICES_DATA: MovingService[] = [
     basePrice: 150,
     priceDescriptor: "desde",
     iconName: "Trash2",
-    bgImage: "https://images.unsplash.com/photo-1565615833231-e8c91a38a012?auto=format&fit=crop&q=80&w=800"
+    bgImage: ("../public/Carrousel-Nando-3.png")
   },
   {
     id: "muebles-electrodomesticos",
@@ -76,7 +76,7 @@ export const SERVICES_DATA: MovingService[] = [
     basePrice: 75,
     priceDescriptor: "por viaje local",
     iconName: "Refrigerator",
-    bgImage: "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&q=80&w=800"
+    bgImage: ("../public/Carrousel-Nando-4.png")
   },
   {
     id: "portes-express",
@@ -94,7 +94,7 @@ export const SERVICES_DATA: MovingService[] = [
     basePrice: 50,
     priceDescriptor: "tarifa inicial",
     iconName: "Zap",
-    bgImage: "https://images.unsplash.com/photo-1549194388-f61be84e6e9e?auto=format&fit=crop&q=80&w=800"
+    bgImage: ("../public/Carrousel-Nando-5.png")
   }
 ];
 

@@ -73,7 +73,7 @@ body::before {
   position: fixed;
   inset: 0;
   z-index: -2;
-  background-image: url("/foto7.png");
+  background-image: url("/Nando-bg.png");
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
