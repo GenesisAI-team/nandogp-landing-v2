@@ -11,6 +11,7 @@ import CalculatorComponent from "./components/Calculator";
 import Reviews from "./components/Reviews";
 import Faqs from "./components/Faqs";
 import ContactForm from "./components/ContactForm";
+import SectionTransition from "./components/SectionTransition";
 import { Phone, MapPin, Sparkles, MessageSquare, ShieldCheck, Heart, ArrowUp } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
 
@@ -117,11 +118,17 @@ export default function App() {
           onOpenCalculatorWithService={handleOpenCalculatorWithService} 
         />
 
+        <SectionTransition src="/Transition-1-No-bg.png" />
+
         {/* GOOGLE REVIEWS SECTION */}
         <Reviews />
 
+        <SectionTransition src="/Transition-2-No-bg.png" />
+
         {/* FAQS SECTION */}
         <Faqs />
+
+        <SectionTransition src="/Transition-3-No-bg.png" />
 
         {/* CONTACT / España Map Location SECTION */}
         <ContactForm />

@@ -60,7 +60,7 @@ export default function Services({ onOpenCalculatorWithService }: ServicesProps)
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-[0.95rem] sm:text-base mt-4 leading-relaxed font-sans font-bold"
+            className="text-[0.95rem] sm:text-base mt-4 leading-relaxed font-sans font-semibold"
           >
             Ofrecemos soluciones personalizadas y flexibles en mudanzas y transportes por toda España. Cuidado de inicio a fin garantizado con tarifas totalmente cerradas y transparentes.
           </motion.p>
@@ -223,7 +223,7 @@ export default function Services({ onOpenCalculatorWithService }: ServicesProps)
                           <div className="absolute inset-0 bg-gradient-to-t from-brand-black via-transparent to-transparent" />
                         </div>
 
-                        <p className="text-medium text-brand-peach leading-relaxed font-sans">
+                        <p className="text-[0.8rem] text-brand-peach leading-relaxed font-sans">
                           {service.longDescription}
                         </p>
 

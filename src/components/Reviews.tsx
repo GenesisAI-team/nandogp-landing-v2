@@ -105,7 +105,7 @@ export default function Reviews() {
               initial={{ opacity: 0, y: 15 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-100px" }}
-              className="text-[0.95rem] sm:text-base font-sans font-bold max-w-xl text-on-bg"
+              className="text-[0.95rem] sm:text-base font-sans font-semibold max-w-xl text-on-bg"
             >
               La transparencia es nuestro pilar fundamental. Aquí puede consultar las valoraciones reales importadas directamente de nuestro perfil de Google, así como redactar su propia valoración.
             </motion.p>
@@ -351,19 +351,19 @@ export default function Reviews() {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{ duration: 1 }}
-          className="mt-12 flex flex-wrap justify-center items-center gap-6 text-xs text-brand-peach/40 uppercase font-mono"
+          className="mt-12 flex flex-wrap justify-center items-center gap-3 text-xs text-brand-peach/40 uppercase font-mono "
         >
-          <div className="flex items-center space-x-2">
-            <LockBadge className="w-4 h-4 text-brand-coral" />
-            <span>Datos Encriptados</span>
+          <div className="flex items-center space-x-1">
+            <LockBadge className="w-3 h-3 text-brand-coral" />
+            <span className="text-white text-[0.68rem] font-bold tracking-wider">Datos Encriptados</span>
           </div>
-          <div className="flex items-center space-x-2">
-            <ShieldCheck className="w-4 h-4 text-brand-coral" />
-            <span>Reseñas 100% Reales</span>
+          <div className="flex items-center space-x-1">
+            <ShieldCheck className="w-3 h-3 text-brand-coral" />
+            <span className="text-white text-[0.68rem] font-bold tracking-wider">Reseñas 100% Reales</span>
           </div>
-          <div className="flex items-center space-x-2">
-            <MapPin className="w-4 h-4 text-brand-coral" />
-            <span>España Local de Confianza</span>
+          <div className="flex items-center space-x-1">
+            <MapPin className="w-3 h-3 text-brand-coral" />
+            <span className="text-white text-[0.68rem] font-bold tracking-wider">España Local de Confianza</span>
           </div>
         </motion.div>
 

@@ -37,7 +37,7 @@ export default function Faqs() {
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Title Block with dynamic entrance */}
-        <div className="text-center max-w-2xl mx-auto mb-16">
+        <div className="text-center max-w-2xl mx-auto mb-16 px-3.5">
           <motion.div
             initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -56,7 +56,7 @@ export default function Faqs() {
             Preguntas Frecuentes <span className="text-brand-coral font-sans font-light">(FAQ)</span>
           </motion.h2>
 
-          <p className="text-xs sm:text-sm text-brand-sand mt-3 font-sans text-on-bg">
+          <p className="text-[0.95rem] sm:text-base font-semibold mt-3 font-sans text-on-bg">
             Encuentre respuestas rápidas sobre coberturas, cajas de embalaje, planificación y metodología de trabajo en NANDO-GP.
           </p>
         </div>
@@ -108,7 +108,7 @@ export default function Faqs() {
                   >
                     <div className="flex items-center space-x-3.5 pr-4">
                       <HelpCircle className={`w-4 h-4 shrink-0 ${isOpen ? "text-brand-coral" : "text-brand-sand/70"}`} />
-                      <span className="font-display font-bold text-xs sm:text-sm text-brand-white leading-snug">
+                      <span className="text-xs bg-gradient-to-r from-brand-coral via-brand-sand/90 to-brand-coral bg-clip-text text-transparent uppercase">
                         {faq.question}
                       </span>
                     </div>
@@ -130,7 +130,7 @@ export default function Faqs() {
                         transition={{ duration: 0.3 }}
                         className="bg-brand-black/35 border-t border-brand-peach/10"
                       >
-                        <div className="p-5 sm:p-6 text-xs sm:text-sm text-brand-peach/90 leading-relaxed font-sans text-left">
+                        <div className="p-5 sm:p-6 text-[0.8rem] sm:text-sm text-brand-white leading-relaxed font-sans text-left">
                           {faq.answer}
                         </div>
                       </motion.div>

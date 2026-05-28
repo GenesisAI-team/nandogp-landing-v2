@@ -113,7 +113,7 @@ export default function Hero({ onOpenCalculator, phone }: HeroProps) {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.2 }}
-                className="text-base font-semibold sm:text-lg  max-w-2xl leading-relaxed font-sans font-medium"
+                className="text-base font-medium sm:text-lg  max-w-2xl leading-relaxed font-sans"
               >
                 Hacemos realidad su traslado sin estrés. Especialistas en mudanzas del hogar, locales y nacionales, montaje meticuloso de muebles, vaciado rápido de inmuebles y portes express garantizados al mejor precio nacional.
               </motion.p>
@@ -155,24 +155,24 @@ export default function Hero({ onOpenCalculator, phone }: HeroProps) {
               <div className="flex flex-col space-y-1">
                 <div className="flex items-center space-x-1 text-brand-coral">
                   <ShieldCheck className="w-3 h-3" />
-                  <span className="font-mono text-xs font-bold uppercase tracking-wider">Garantía</span>
+                  <span className="font-mono text-[0.68rem] font-bold uppercase tracking-wider">Garantía</span>
                 </div>
-                <p className="text-xs text-brand-peach/60 leading-normal">Seguros de cobertura a todo riesgo.</p>
+                <p className="text-white/85 text-[0.68rem] tracking-wider">Seguros de cobertura a todo riesgo.</p>
               </div>
 
                <div className="flex flex-col space-y-1">
                 <div className="flex items-center space-x-1 text-brand-coral">
                   <ShieldCheck className="w-3 h-3" />
-                  <span className="font-mono text-xs font-bold uppercase tracking-wider">Urgencias</span>
+                  <span className="font-mono text-[0.68rem] font-bold uppercase tracking-wider">Urgencias</span>
                 </div>
-                <p className="text-xs text-brand-peach/60 leading-normal">Portes rápidos y ágiles en 24h.</p>
+                <p className="text-white/85 text-[0.68rem] tracking-wider">Portes rápidos y ágiles en 24h.</p>
 
               </div> <div className="flex flex-col space-y-1">
                 <div className="flex items-center space-x-1 text-brand-coral">
                   <ShieldCheck className="w-3 h-3" />
-                  <span className="font-mono text-xs font-bold uppercase tracking-wider">Confianza</span>
+                  <span className="font-mono text-[0.68rem] font-bold uppercase tracking-wider">Confianza</span>
                 </div>
-                <p className="text-xs text-brand-peach/60 leading-normal">Trato amigable, cercano y educado.</p>
+                <p className="text-white/85 text-[0.68rem] tracking-wider">Trato personal, cercano y educado.</p>
               </div>
             
             </motion.div>
@@ -205,7 +205,7 @@ export default function Hero({ onOpenCalculator, phone }: HeroProps) {
                   <h3 className="font-display uppercase font-bold bg-gradient-to-r from-brand-terracotta to-brand-coral bg-clip-text text-transparent text-lg leading-snug mt-3">
                     {activePhoto.title}
                   </h3>
-                  <p className="text-sm sm:text-base font-semibold leading-relaxed mt-1 line-clamp-4">
+                  <p className="text-sm sm:text-base font-medium leading-relaxed mt-1 line-clamp-4">
                     {activePhoto.desc}
                   </p>
                 </motion.div>
