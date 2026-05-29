@@ -118,17 +118,17 @@ export default function App() {
           onOpenCalculatorWithService={handleOpenCalculatorWithService} 
         />
 
-        <SectionTransition src="/Transition-1-No-bg.png" />
+        <SectionTransition src="/Transition-1-No-bg.webp" />
 
         {/* GOOGLE REVIEWS SECTION */}
         <Reviews />
 
-        <SectionTransition src="/Transition-2-No-bg.png" />
+        <SectionTransition src="/Transition-2-No-bg.webp" />
 
         {/* FAQS SECTION */}
         <Faqs />
 
-        <SectionTransition src="/Transition-3-No-bg.png" />
+        <SectionTransition src="/Transition-3-No-bg.webp" />
 
         {/* CONTACT / España Map Location SECTION */}
         <ContactForm />

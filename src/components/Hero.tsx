@@ -23,35 +23,35 @@ interface StackPhoto {
 const PHOTOS_STACK: StackPhoto[] = [
 {
   id: 1,
-  url: "/Furgoneta-Prod3.png",
+  url: "/Furgoneta-Prod3.webp",
   title: "Transporte Seguro",
   tag: "FLOTA HOMOLOGADA",
   desc: "Vehículos equipados para realizar portes, mudanzas y traslados con una carga ordenada y bien sujeta."
 },
 {
   id: 2,
-  url: "/Furgoneta-Prod2.png",
+  url: "/Furgoneta-Prod2.webp",
   title: "Protección de Enseres",
   tag: "EMBALAJE PREMIUM",
   desc: "Envolvemos muebles, cajas y objetos delicados con materiales adecuados para evitar golpes, roces o daños durante el traslado."
 },
 {
   id: 3,
-  url: "/Furgoneta-Prod4.png",
+  url: "/Furgoneta-Prod1.webp",
   title: "Montaje y Desmontaje",
   tag: "MONTAJE EXPERTO",
   desc: "Desmontamos y montamos muebles voluminosos cuando el traslado lo requiere, cuidando piezas, tornillos y estructuras."
 },
 {
   id: 4,
-  url: "/Furgoneta-Prod5.png",
+  url: "/Furgoneta-Prod4.webp",
   title: "Portes Express",
   tag: "RAPIDEZ ABSOLUTA",
   desc: "Servicio ágil para mover muebles sueltos, electrodomésticos, compras, cajas o entregas puntuales sin montar una mudanza completa."
 },
 {
   id: 5,
-  url: "/Furgoneta-Prod6.png",
+  url: "/Furgoneta-Prod5.webp",
   title: "Vaciado de Espacios",
   tag: "VACIADO PROFESIONAL",
   desc: "Retiramos muebles, enseres y objetos voluminosos de pisos, trasteros, garajes o locales, adaptándonos al volumen del vaciado."
@@ -140,7 +140,7 @@ export default function Hero({ onOpenCalculator, phone }: HeroProps) {
                 onClick={handleWhatsApp}
                 className="flex items-center justify-center gap-2 px-8 py-4 bg-[#25D366] hover:bg-[#1ebe5a] text-white font-bold rounded-xl transition-all cursor-pointer hover:scale-103"
               >
-                <img src="/Whatsapp-button.png" alt="WhatsApp" className="w-20 h-20 shrink-0 object-contain rounded" />
+                <img src="/Whatsapp-button.webp" alt="WhatsApp" className="w-20 h-20 shrink-0 object-contain rounded" />
                 <span>Contactar por WhatsApp</span>
               </button>
             </motion.div>

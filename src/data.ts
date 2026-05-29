@@ -22,7 +22,7 @@ export const SERVICES_DATA: MovingService[] = [
     basePrice: 280,
     priceDescriptor: "precio base medio",
     iconName: "Truck",
-    bgImage: ("../public/Carrousel-Nando-1.png"),
+    bgImage: ("/Carrousel-Nando-1.webp"),
   },
   {
     id: "montaje-muebles",
@@ -40,7 +40,7 @@ export const SERVICES_DATA: MovingService[] = [
     basePrice: 45,
     priceDescriptor: "por hora / operario",
     iconName: "Wrench",
-    bgImage: ("../public/Carrousel-Nando-2.png"),
+    bgImage: ("/Carrousel-Nando-2.webp"),
   },
   {
     id: "vaciados",
@@ -58,7 +58,7 @@ export const SERVICES_DATA: MovingService[] = [
     basePrice: 150,
     priceDescriptor: "desde",
     iconName: "Trash2",
-    bgImage: ("../public/Carrousel-Nando-3.png")
+    bgImage: ("/Carrousel-Nando-3.webp")
   },
   {
     id: "muebles-electrodomesticos",
@@ -76,7 +76,7 @@ export const SERVICES_DATA: MovingService[] = [
     basePrice: 75,
     priceDescriptor: "por viaje local",
     iconName: "Refrigerator",
-    bgImage: ("../public/Carrousel-Nando-4.png")
+    bgImage: ("/Carrousel-Nando-4.webp")
   },
   {
     id: "portes-express",
@@ -94,7 +94,7 @@ export const SERVICES_DATA: MovingService[] = [
     basePrice: 50,
     priceDescriptor: "tarifa inicial",
     iconName: "Zap",
-    bgImage: ("../public/Carrousel-Nando-5.png")
+    bgImage: ("/Carrousel-Nando-5.webp")
   }
 ];
 
