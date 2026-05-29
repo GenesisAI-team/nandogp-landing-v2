@@ -8,7 +8,6 @@ import { motion, AnimatePresence } from "motion/react";
 import { ArrowRight, Phone, ShieldCheck, Heart, Clock } from "lucide-react";
 
 interface HeroProps {
-  onOpenCalculator: () => void;
   phone: string;
 }
 
@@ -58,7 +57,7 @@ const PHOTOS_STACK: StackPhoto[] = [
 }
 ];
 
-export default function Hero({ onOpenCalculator, phone }: HeroProps) {
+export default function Hero({ phone }: HeroProps) {
   const [activeIndex, setActiveIndex] = useState(0);
   const [direction, setDirection] = useState(1);
 
@@ -71,7 +70,7 @@ export default function Hero({ onOpenCalculator, phone }: HeroProps) {
 
   const handleWhatsApp = () => {
     const text = encodeURIComponent("¡Hola NANDO-GP! Acabo de ver vuestra web y me gustaría preguntar por vuestras tarifas de mudanzas.");
-    window.open(`https://wa.me/34605911930?text=${text}`, "_blank");
+    window.open(`https://wa.me/34605474930?text=${text}`, "_blank");
   };
 
   return (
@@ -135,7 +134,7 @@ export default function Hero({ onOpenCalculator, phone }: HeroProps) {
                 <ArrowRight className="w-4 h-4 shrink-0 transition-transform group-hover:translate-x-1" />
               </a>
 
-<button
+              <button
                 id="hero-whatsapp-btn"
                 onClick={handleWhatsApp}
                 className="flex items-center justify-center gap-2 px-8 py-4 bg-[#25D366] hover:bg-[#1ebe5a] text-white font-bold rounded-xl transition-all cursor-pointer hover:scale-103"

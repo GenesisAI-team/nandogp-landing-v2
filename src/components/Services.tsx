@@ -9,9 +9,7 @@ import { Truck, Wrench, Trash2, Package, Zap, CheckCircle2, ChevronDown, ArrowRi
 import { MovingService } from "../types";
 import { SERVICES_DATA } from "../data";
 
-interface ServicesProps {
-  onOpenCalculatorWithService: (serviceId: string) => void;
-}
+
 
 // Icon mapper helper
 const IconComponents: { [key: string]: React.ComponentType<{ className?: string }> } = {
@@ -22,7 +20,7 @@ const IconComponents: { [key: string]: React.ComponentType<{ className?: string 
   Zap: Zap,
 };
 
-export default function Services({ onOpenCalculatorWithService }: ServicesProps) {
+export default function Services() {
   const [activeTab, setActiveTab] = useState<string>(SERVICES_DATA[0].id);
   const [expandedCard, setExpandedCard] = useState<string | null>(null);
 
