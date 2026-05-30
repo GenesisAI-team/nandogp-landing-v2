@@ -114,7 +114,7 @@ export default function Header({ phone }: HeaderProps) {
           >
             {/* Backdrop */}
             <div
-              className="absolute inset-0 bg-brand-black/80 backdrop-blur-sm"
+              className="absolute inset-0 bg-brand-black/10 backdrop-blur-sm"
               onClick={() => setMobileMenuOpen(false)}
             />
 
@@ -140,6 +140,24 @@ export default function Header({ phone }: HeaderProps) {
                 </button>
               </div>
 
+              {/* Action buttons */}
+              <div className="pb-8  flex flex-col ">
+                <a
+                  href={phoneTel}
+                  className="flex items-center justify-center gap-3 px-5 py-3.5 bg-gradient-to-r from-brand-terracotta to-brand-coral text-brand-white font-bold transition-all hover:scale-103"
+                >
+                  <Phone className="w-6 h-6" />
+                  <span>Llamar ahora</span>
+                </a>
+                <button
+                  onClick={handleWhatsApp}
+                  className="flex items-center justify-center gap-1 px-5 py-3.5 bg-[#25D366] hover:bg-[#1ebe5a] text-white font-bold transition-all cursor-pointer"
+                >
+                  <img src="/Whatsapp-button.webp" alt="WhatsApp" className="w-14 h-14 shrink-0 object-contain rounded" />
+                  <span>WhatsApp</span>
+                </button>
+              </div>
+
               {/* Nav links */}
               <nav className="flex flex-col">
                 {NAV_ITEMS.map((item, i) => (
@@ -157,23 +175,7 @@ export default function Header({ phone }: HeaderProps) {
                 ))}
               </nav>
 
-              {/* Action buttons */}
-              <div className="mt-auto px-6 pb-8 pt-6 flex flex-col gap-3 border-t border-brand-peach/10">
-                <a
-                  href={phoneTel}
-                  className="flex items-center justify-center gap-3 px-5 py-3.5 bg-gradient-to-r from-brand-terracotta to-brand-coral text-brand-white font-bold rounded-xl transition-all hover:scale-103"
-                >
-                  <Phone className="w-6 h-6" />
-                  <span>Llamar ahora</span>
-                </a>
-                <button
-                  onClick={handleWhatsApp}
-                  className="flex items-center justify-center gap-1 px-5 py-3.5 bg-[#25D366] hover:bg-[#1ebe5a] text-white font-bold rounded-xl transition-all cursor-pointer"
-                >
-                  <img src="/Whatsapp-button.webp" alt="WhatsApp" className="w-14 h-14 shrink-0 object-contain rounded" />
-                  <span>WhatsApp</span>
-                </button>
-              </div>
+              
             </motion.div>
           </motion.div>
         )}
