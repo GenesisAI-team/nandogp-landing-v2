@@ -5,12 +5,17 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import { HelpCircle, ChevronDown, Award, Sparkles, MessageSquare, ShieldAlert } from "lucide-react";
+import { HelpCircle, ChevronDown, Award, Sparkles, MessageSquare, ShieldAlert, ArrowRight, Phone } from "lucide-react";
 import { FAQ_DATA } from "../data";
 
 export default function Faqs() {
   const [activeCategory, setActiveCategory] = useState<"todos" | "precios" | "seguridad" | "proceso">("todos");
   const [openFaqId, setOpenFaqId] = useState<string | null>("faq1"); // First one stays open for initial engagement
+
+  const handleWhatsApp = () => {
+    const text = encodeURIComponent("¡Hola NANDO-GP! Me gustaría resolver una duda sobre vuestros servicios de mudanza.");
+    window.open(`https://wa.me/34605474930?text=${text}`, "_blank");
+  };
 
   // Categories mapping
   const categoryLabels = [
@@ -156,16 +161,25 @@ export default function Faqs() {
             </p>
           </div>
 
-          <button
-            id="faq-help-btn"
-            onClick={() => {
-              const text = encodeURIComponent("¡Hola NANDO-GP! He leído las preguntas frecuentes de la web pero me queda una duda sobre...");
-              window.open(`https://wa.me/34605911930?text=${text}`, "_blank");
-            }}
-            className="py-3 px-6 rounded-xl bg-brand-terracotta hover:bg-brand-coral border border-brand-white/10 text-xs font-bold text-brand-white cursor-pointer transition-all hover:scale-103"
-          >
-            Preguntar por chat
-          </button>
+          <div className="flex flex-col sm:flex-row sm:gap-4 gap-2">
+            <a
+              href="tel:+34653896352"
+              className="flex items-center justify-center gap-3 px-8 py-4 bg-gradient-to-r from-brand-terracotta to-brand-coral hover:from-brand-coral hover:to-brand-terracotta text-brand-white font-bold rounded-xl shadow-xl transition-all hover:scale-103 cursor-pointer group"
+            >
+              <Phone className="w-5 h-5 shrink-0" />
+              <span>653 89 63 52</span>
+              <ArrowRight className="w-4 h-4 shrink-0 transition-transform group-hover:translate-x-1" />
+            </a>
+
+            <button
+              id="faq-whatsapp-btn"
+              onClick={handleWhatsApp}
+              className="flex items-center justify-center gap-2 px-8 py-4 bg-[#25D366] hover:bg-[#1ebe5a] text-white font-bold rounded-xl transition-all cursor-pointer hover:scale-103"
+            >
+              <img src="/Whatsapp-button.webp" alt="WhatsApp" className="w-20 h-20 shrink-0 object-contain rounded" />
+              <span>Contactar por WhatsApp</span>
+            </button>
+          </div>
         </motion.div>
 
       </div>
