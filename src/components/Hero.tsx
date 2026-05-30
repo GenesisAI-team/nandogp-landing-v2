@@ -78,7 +78,7 @@ export default function Hero() {
         <div className="grid grid-cols-1 lg:grid-cols-12 lg:gap-5 items-center">
           
           {/* Main Slogan & Headings Block */}
-          <div className="lg:col-span-7 flex flex-col space-y-1 text-left lg:pr-6 p-6 sm:p-10 rounded-3xl premium-card">
+          <div className="lg:col-span-7 flex flex-col space-y-3 text-left lg:pr-6 p-6 sm:p-10 rounded-3xl premium-card">
             
             {/* Quick trust tag */}
             <motion.div
@@ -112,31 +112,33 @@ export default function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.3 }}
-              className="flex flex-col sm:flex-row gap-4 "
+              className="flex flex-col gap-4"
             >
-              <a
-                href="tel:+34653896352"
-                className="flex items-center justify-center gap-3 px-8 py-4 bg-gradient-to-r from-brand-terracotta to-brand-coral hover:from-brand-coral hover:to-brand-terracotta text-brand-white font-bold rounded-xl shadow-xl transition-all hover:scale-103 cursor-pointer group"
-              >
-                <Phone className="w-5 h-5 shrink-0" />
-                <span>653 89 63 52</span>
-                <ArrowRight className="w-4 h-4 shrink-0 transition-transform group-hover:translate-x-1" />
-              </a>
+              <div className="flex flex-col sm:flex-row sm:gap-4 gap-2">
+                <a
+                  href="tel:+34653896352"
+                  className="flex items-center justify-center gap-3 px-8 py-4 bg-gradient-to-r from-brand-terracotta to-brand-coral hover:from-brand-coral hover:to-brand-terracotta text-brand-white font-bold rounded-xl shadow-xl transition-all hover:scale-103 cursor-pointer group"
+                >
+                  <Phone className="w-5 h-5 shrink-0" />
+                  <span>653 89 63 52</span>
+                  <ArrowRight className="w-4 h-4 shrink-0 transition-transform group-hover:translate-x-1" />
+                </a>
 
-              <button
-                id="hero-whatsapp-btn"
-                onClick={handleWhatsApp}
-                className="flex items-center justify-center gap-2 px-8 py-4 bg-[#25D366] hover:bg-[#1ebe5a] text-white font-bold rounded-xl transition-all cursor-pointer hover:scale-103"
-              >
-                <img src="/Whatsapp-button.webp" alt="WhatsApp" className="w-20 h-20 shrink-0 object-contain rounded" />
-                <span>Contactar por WhatsApp</span>
-              </button>
+                <button
+                  id="hero-whatsapp-btn"
+                  onClick={handleWhatsApp}
+                  className="flex items-center justify-center gap-2 px-8 py-4 bg-[#25D366] hover:bg-[#1ebe5a] text-white font-bold rounded-xl transition-all cursor-pointer hover:scale-103"
+                >
+                  <img src="/Whatsapp-button.webp" alt="WhatsApp" className="w-20 h-20 shrink-0 object-contain rounded" />
+                  <span>Contactar por WhatsApp</span>
+                </button>
+              </div>
 
-                  <motion.p
+              <motion.p
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.2 }}
-                className="text-base font-medium sm:text-lg  max-w-2xl leading-relaxed font-sans"
+                className="text-base font-medium sm:text-lg max-w-2xl leading-relaxed font-sans"
               >
                 Hacemos realidad su traslado sin estrés. Especialistas en mudanzas del hogar, locales y nacionales, montaje meticuloso de muebles, vaciado rápido de inmuebles y portes express garantizados al mejor precio nacional.
               </motion.p>
