@@ -44,7 +44,7 @@ export default function Header({ phone }: HeaderProps) {
 
   return (
     <>
-      <header className="fixed top-0 inset-x-0 h-18 sm:h-20 z-30 bg-brand-black/40 backdrop-blur-md border-b border-brand-peach/10">
+      <header className="fixed top-0 inset-x-0 h-18 sm:h-20 lg:h-24 z-30 bg-brand-black/40 backdrop-blur-md border-b border-brand-peach/10">
         <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 h-full flex items-center justify-between ">
 
           {/* Logo */}
@@ -68,7 +68,7 @@ export default function Header({ phone }: HeaderProps) {
           </a>
 
           {/* Desktop nav */}
-          <nav className="hidden md:flex items-center space-x-6 text-xs uppercase tracking-wider font-mono">
+          <nav className="hidden md:flex items-center space-x-3 md:space-x-4 lg:space-x-6 text-[0.65rem] md:text-[0.7rem] lg:text-sm uppercase tracking-wider font-mono">
             {NAV_ITEMS.map((item) => (
               <a
                 key={item.href}
@@ -84,10 +84,10 @@ export default function Header({ phone }: HeaderProps) {
           <a
             id="top-phone-call-btn"
             href={phoneTel}
-            className="hidden md:flex items-center space-x-2 px-4 py-2 rounded-xl bg-brand-brown/50 border border-brand-peach/25 text-xs font-bold text-brand-sand hover:text-brand-white transition-all hover:scale-103"
+            className="hidden md:flex items-center space-x-1 md:space-x-2 lg:space-x-3 px-2 md:px-3 lg:px-5 py-2 lg:py-3 rounded-xl bg-brand-brown/50 border border-brand-peach/25 font-bold text-brand-sand hover:text-brand-white transition-all hover:scale-103 text-[0.65rem] md:text-xs lg:text-[2rem]"
           >
-            <Phone className="w-3.5 h-3.5 text-brand-coral" />
-            <span className="font-mono">{phone}</span>
+            <Phone className="text-brand-coral shrink-0 w-3 h-3 md:w-3.5 md:h-3.5 lg:w-7 lg:h-7" />
+            <span className="font-mono">653 89 63 52</span>
           </a>
 
           {/* Mobile hamburger */}
