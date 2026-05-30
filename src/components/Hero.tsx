@@ -7,10 +7,6 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { ArrowRight, Phone, ShieldCheck, Heart, Clock } from "lucide-react";
 
-interface HeroProps {
-  phone: string;
-}
-
 interface StackPhoto {
   id: number;
   url: string;
@@ -57,7 +53,7 @@ const PHOTOS_STACK: StackPhoto[] = [
 }
 ];
 
-export default function Hero({ phone }: HeroProps) {
+export default function Hero() {
   const [activeIndex, setActiveIndex] = useState(0);
   const [direction, setDirection] = useState(1);
 

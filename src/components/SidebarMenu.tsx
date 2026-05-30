@@ -7,11 +7,7 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { Phone, MessageSquare, Calculator, Star, HelpCircle, X, ChevronLeft, Menu } from "lucide-react";
 
-interface SidebarMenuProps {
-  phone: string;
-}
-
-export default function SidebarMenu({ phone }: SidebarMenuProps) {
+export default function SidebarMenu() {
   const [isOpen, setIsOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("");
 

@@ -50,7 +50,7 @@ export default function ContactForm() {
       id="contacto" 
       className="relative"
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 mb-20">
         
         {/* Section Heading */}
         <div className="text-center max-w-2xl mx-auto mb-16 px-3">
@@ -87,7 +87,7 @@ export default function ContactForm() {
                 <div>
                   <p className="text-[10px] text-brand-peach/50 font-mono uppercase">Llamadas e Info Directa</p>
                   <a href="tel:+34605911930" className="text-sm font-mono font-bold text-brand-white hover:text-brand-sand transition-all">
-                    +34 605 911 930
+                    +34 653 89 63 52
                   </a>
                 </div>
               </div>
@@ -98,8 +98,8 @@ export default function ContactForm() {
                 </div>
                 <div>
                   <p className="text-[10px] text-brand-peach/50 font-mono uppercase">Correo electrónico corporativo</p>
-                  <a href="mailto:soporte@nandogp.es" className="text-sm font-bold text-brand-white hover:text-brand-sand transition-all">
-                    soporte@nandogp.es
+                  <a href="mailto:transportesymundanzasnandogp@gmail.com" className="block max-w-full text-xs sm:text-sm font-bold text-brand-white hover:text-brand-sand transition-all leading-tight [overflow-wrap:anywhere]">
+                    transportesymundanzasnandogp@gmail.com
                   </a>
                 </div>
               </div>
@@ -122,7 +122,7 @@ export default function ContactForm() {
                 </div>
                 <div>
                   <p className="text-[10px] text-brand-peach/50 font-mono uppercase">Formas de pago seguras aceptadas</p>
-                  <div className="flex items-center space-x-2 mt-1">
+                  <div className="flex flex-wrap items-center gap-1.5 mt-1 ">
                     <span className="text-[10px] font-bold text-sky-400 bg-sky-950/45 px-2 py-0.5 rounded-md border border-sky-400/20">BIZUM</span>
                     <span className="text-[10px] font-bold text-teal-400 bg-teal-950/45 px-2 py-0.5 rounded-md border border-teal-400/20">EFECTIVO</span>
                     <span className="text-[10px] font-bold text-amber-400 bg-amber-950/45 px-2 py-0.5 rounded-md border border-amber-400/20">TRANSFERENCIA</span>
