@@ -78,7 +78,7 @@ export default function Hero() {
         <div className="grid grid-cols-1 lg:grid-cols-12 lg:gap-5 items-center">
           
           {/* Main Slogan & Headings Block */}
-          <div className="lg:col-span-7 flex flex-col space-y-8 text-left lg:pr-6 p-6 sm:p-10 rounded-3xl premium-card">
+          <div className="lg:col-span-7 flex flex-col space-y-1 text-left lg:pr-6 p-6 sm:p-10 rounded-3xl premium-card">
             
             {/* Quick trust tag */}
             <motion.div
@@ -104,14 +104,7 @@ export default function Hero() {
                 </span>
               </motion.h1>
 
-              <motion.p
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.2 }}
-                className="text-base font-medium sm:text-lg  max-w-2xl leading-relaxed font-sans"
-              >
-                Hacemos realidad su traslado sin estrés. Especialistas en mudanzas del hogar, locales y nacionales, montaje meticuloso de muebles, vaciado rápido de inmuebles y portes express garantizados al mejor precio nacional.
-              </motion.p>
+          
             </div>
 
             {/* Quick Action Button Drawer */}
@@ -119,7 +112,7 @@ export default function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.3 }}
-              className="flex flex-col sm:flex-row gap-4 pt-2"
+              className="flex flex-col sm:flex-row gap-4 "
             >
               <a
                 href="tel:+34653896352"
@@ -138,6 +131,15 @@ export default function Hero() {
                 <img src="/Whatsapp-button.webp" alt="WhatsApp" className="w-20 h-20 shrink-0 object-contain rounded" />
                 <span>Contactar por WhatsApp</span>
               </button>
+
+                  <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.2 }}
+                className="text-base font-medium sm:text-lg  max-w-2xl leading-relaxed font-sans"
+              >
+                Hacemos realidad su traslado sin estrés. Especialistas en mudanzas del hogar, locales y nacionales, montaje meticuloso de muebles, vaciado rápido de inmuebles y portes express garantizados al mejor precio nacional.
+              </motion.p>
             </motion.div>
 
             {/* Key Service Highlights on Home Banner with icons */}
