@@ -12,8 +12,7 @@ import Faqs from "./components/Faqs";
 import ContactForm from "./components/ContactForm";
 import SectionTransition from "./components/SectionTransition";
 import Footer from "./components/Footer";
-import WhatsappWidget from "./components/WhatsappWidget";
-import PhoneWidget from "./components/PhoneWidget";
+import FloatingContact from "./components/FloatingContact";
 
 const PHONE_NUMBER = "+34 605 47 49 30";
 
@@ -58,10 +57,7 @@ export default function App() {
 
       <Footer />
 
-      <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-3">
-        <PhoneWidget />
-        <WhatsappWidget />
-      </div>
+      <FloatingContact />
 
     </div>
   );
