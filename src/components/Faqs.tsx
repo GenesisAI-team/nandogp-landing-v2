@@ -35,10 +35,6 @@ export default function Faqs() {
       id="faq" 
       className="py-24 border-y border-brand-peach/10 relative overflow-hidden"
     >
-      {/* Background radial soft lights */}
-      <div className="absolute top-[40%] right-[-10%] w-[30%] h-[30%] rounded-full bg-gradient-to-br from-brand-terracotta/10 to-transparent blur-[110px] pointer-events-none" />
-      <div className="absolute bottom-[20%] left-[-10%] w-[30%] h-[30%] rounded-full bg-gradient-to-tr from-brand-brown/30 to-transparent blur-[110px] pointer-events-none" />
-
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Title Block with dynamic entrance */}
@@ -146,43 +142,44 @@ export default function Faqs() {
             })}
           </AnimatePresence>
         </div>
-
-        {/* Quick helper contact box */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="mt-12 p-6 rounded-2xl premium-card flex flex-col sm:flex-row justify-between items-center text-center sm:text-left gap-4"
-        >
-          <div className="space-y-1">
-            <h4 className="font-display font-bold text-brand-white text-sm uppercase">¿Su duda no aparece aquí?</h4>
-            <p className="text-xs text-brand-peach/70 font-sans">
-              Estamos disponibles para conversar por WhatsApp o atender su llamada telefónica en cualquier momento.
-            </p>
-          </div>
-
-          <div className="flex flex-col sm:flex-row sm:gap-4 gap-2">
-            <a
-              href="tel:+34653896352"
-              className="flex items-center justify-center gap-3 px-8 py-4 bg-gradient-to-r from-brand-terracotta to-brand-coral hover:from-brand-coral hover:to-brand-terracotta text-brand-white font-bold rounded-xl shadow-xl transition-all hover:scale-103 cursor-pointer group"
-            >
-              <Phone className="w-5 h-5 shrink-0" />
-              <span>653 89 63 52</span>
-              <ArrowRight className="w-4 h-4 shrink-0 transition-transform group-hover:translate-x-1" />
-            </a>
-
-            <button
-              id="faq-whatsapp-btn"
-              onClick={handleWhatsApp}
-              className="flex items-center justify-center gap-2 px-8 py-4 bg-[#25D366] hover:bg-[#1ebe5a] text-white font-bold rounded-xl transition-all cursor-pointer hover:scale-103"
-            >
-              <img src="/Whatsapp-button.webp" alt="WhatsApp" className="w-20 h-20 shrink-0 object-contain rounded" />
-              <span>Contactar por WhatsApp</span>
-            </button>
-          </div>
-        </motion.div>
-
       </div>
+
+      {/* Quick helper contact box */}
+      <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 mt-16 relative z-10">
+        <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="mt-12 p-6 rounded-2xl premium-card flex flex-col justify-between items-center text-center sm:text-left gap-4"
+          >
+            <div className="space-y-1">
+              <h4 className="font-display font-bold text-brand-white text-sm uppercase">¿Su duda no aparece aquí?</h4>
+              <p className="text-xs text-brand-peach/70 font-sans">
+                Estamos disponibles para conversar por WhatsApp o atender su llamada telefónica en cualquier momento.
+              </p>
+            </div>
+
+            <div className="flex flex-col sm:flex-row sm:gap-4 gap-2">
+              <a
+                href="tel:+34653896352"
+                className="flex items-center justify-center gap-3 px-8 py-4 bg-gradient-to-r from-brand-terracotta to-brand-coral hover:from-brand-coral hover:to-brand-terracotta text-brand-white font-bold rounded-xl shadow-xl transition-all hover:scale-103 cursor-pointer group"
+              >
+                <Phone className="w-5 h-5 shrink-0" />
+                <span>653 89 63 52</span>
+                <ArrowRight className="w-4 h-4 shrink-0 transition-transform group-hover:translate-x-1" />
+              </a>
+
+              <button
+                id="faq-whatsapp-btn"
+                onClick={handleWhatsApp}
+                className="flex items-center justify-center gap-2 px-8 py-4 bg-[#25D366] hover:bg-[#1ebe5a] text-white font-bold rounded-xl transition-all cursor-pointer hover:scale-103"
+              >
+                <img src="/Whatsapp-button.webp" alt="WhatsApp" className="w-20 h-20 shrink-0 object-contain rounded" />
+                <span>Contactar por WhatsApp</span>
+              </button>
+            </div>
+          </motion.div>
+        </div>
     </section>
   );
 }
