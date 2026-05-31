@@ -3,14 +3,21 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { HelpCircle, ChevronDown, Award, Sparkles, MessageSquare, ShieldAlert, ArrowRight, Phone } from "lucide-react";
 import { FAQ_DATA } from "../data";
 
 export default function Faqs() {
   const [activeCategory, setActiveCategory] = useState<"todos" | "precios" | "seguridad" | "proceso">("todos");
-  const [openFaqId, setOpenFaqId] = useState<string | null>("faq1"); // First one stays open for initial engagement
+  const [openFaqId, setOpenFaqId] = useState<string | null>(null);
+
+  useEffect(() => {
+    const raf = requestAnimationFrame(() => {
+      setOpenFaqId("faq1");
+    });
+    return () => cancelAnimationFrame(raf);
+  }, []);
 
   const handleWhatsApp = () => {
     const text = encodeURIComponent("¡Hola NANDO-GP! Me gustaría resolver una duda sobre vuestros servicios de mudanza.");
