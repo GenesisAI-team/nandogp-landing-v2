@@ -3,8 +3,8 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import { useState } from "react";
-import { motion, AnimatePresence } from "motion/react";
+import { useState, useRef } from "react";
+import { motion, AnimatePresence, useInView } from "motion/react";
 import { ArrowRight, Phone, ShieldCheck, Heart, Clock } from "lucide-react";
 
 interface StackPhoto {
@@ -56,6 +56,9 @@ const PHOTOS_STACK: StackPhoto[] = [
 export default function Hero() {
   const [activeIndex, setActiveIndex] = useState(0);
   const [direction, setDirection] = useState(1);
+
+  const vanRef = useRef<HTMLDivElement>(null);
+  const vanInView = useInView(vanRef, { once: true, amount: 0.15 });
 
   const handleNext = () => {
     setDirection(1);
@@ -183,18 +186,23 @@ export default function Hero() {
             
             <div className="relative w-full max-w-[520px]" style={{ minHeight: '520px' }}>
               
-              {/* Info card — sits at the bottom, behind the van */}
-              <AnimatePresence mode="wait" custom={direction}>
-                <motion.div
-                  key={`card-${activePhoto.id}`}
-                  custom={direction}
-                  initial={{ opacity: 0, y: 30 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -20 }}
-                  transition={{ type: "spring", stiffness: 220, damping: 26 }}
-                  className="max-h-[200px] overflow-hidden absolute bottom-0 left-0 right-0 z-10 rounded-2xl border border-brand-peach/18 shadow-2xl px-4 py-4 flex flex-col"
-                  style={{ background: "linear-gradient(180deg, rgba(21,16,11,0.97) 0%, rgba(10,6,4,0.98) 100%)" }}
-                >
+              {/* Info card — scroll-triggered entrance */}
+              <motion.div
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{ duration: 0.5, delay: 0.15 }}
+                className="max-h-[200px] overflow-hidden absolute bottom-0 left-0 right-0 z-10"
+              >
+                <AnimatePresence mode="wait" custom={direction}>
+                  <motion.div
+                    key={`card-${activePhoto.id}`}
+                    custom={direction}
+                    exit={{ opacity: 0, y: -20 }}
+                    transition={{ type: "spring", stiffness: 220, damping: 26 }}
+                    className="rounded-2xl border border-brand-peach/18 shadow-2xl px-4 py-4 flex flex-col"
+                    style={{ background: "linear-gradient(180deg, rgba(21,16,11,0.97) 0%, rgba(10,6,4,0.98) 100%)" }}
+                  >
                   {/* Tag badge */}
                   <span className="text-center bg-gradient-to-r from-brand-terracotta to-brand-coral text-brand-white text-[9px] font-bold tracking-widest uppercase px-2.5 py-1 rounded-md">
                     {activePhoto.tag}
@@ -209,20 +217,32 @@ export default function Hero() {
                   </p>
                 </motion.div>
               </AnimatePresence>
+              </motion.div>
 
-              {/* Van image — floating, clickable to advance */}
-              <AnimatePresence mode="wait" custom={direction}>
-                <motion.div
-                  key={`van-${activePhoto.id}`}
-                  custom={direction}
-                  initial={{ opacity: 0, x: direction * 100, scale: 0.92 }}
-                  animate={{ opacity: 1, x: 0, scale: 1 }}
-                  exit={{ opacity: 0, x: direction * -100, scale: 0.92 }}
-                  transition={{ type: "spring", stiffness: 180, damping: 24 }}
-                  className="absolute z-20 left-0 right-0 top-0 hero-van-floating cursor-pointer"
-                  style={{ height: '340px' }}
-                  onClick={handleNext}
-                >
+              {/* Van image — useInView gates first entrance, carousel stays smooth */}
+              <div
+                ref={vanRef}
+                className="absolute z-20 left-0 right-0 top-0"
+                style={{ height: '340px' }}
+              >
+                <AnimatePresence mode="wait" custom={direction}>
+                  <motion.div
+                    key={`van-${activePhoto.id}`}
+                    custom={direction}
+                    initial={vanInView
+                      ? { opacity: 0, x: direction * 100, scale: 0.92 }
+                      : { opacity: 0, x: 300, scale: 0.92 }}
+                    animate={vanInView
+                      ? { opacity: 1, x: 0, scale: 1 }
+                      : { opacity: 0, x: 300, scale: 0.92 }}
+                    exit={{ opacity: 0, x: direction * -100, scale: 0.92 }}
+                    transition={vanInView
+                      ? { type: "spring", stiffness: 180, damping: 24 }
+                      : { type: "spring", stiffness: 55, damping: 6, mass: 3.5 }}
+                    className="hero-van-floating cursor-pointer"
+                    style={{ height: '340px' }}
+                    onClick={handleNext}
+                  >
                   <img
                     src={activePhoto.url}
                     alt={activePhoto.title}
@@ -230,6 +250,7 @@ export default function Hero() {
                   />
                 </motion.div>
               </AnimatePresence>
+              </div>
             </div>
 
             {/* Minimal dot navigation */}
