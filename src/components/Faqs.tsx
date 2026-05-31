@@ -154,10 +154,11 @@ export default function Faqs() {
       {/* Quick helper contact box */}
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 mt-16 relative z-10">
         <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="mt-12 p-6 rounded-2xl premium-card flex flex-col justify-between items-center text-center sm:text-left gap-4"
+          initial={{ opacity: 0, y: 80, scale: 0.88 }}
+          whileInView={{ opacity: 1, y: 0, scale: 1 }}
+          viewport={{ once: true, amount: 0.35 }}
+          transition={{ type: "spring", stiffness: 100, damping: 12, mass: 0.6 }}
+          className="mt-12 p-6 rounded-2xl premium-card flex flex-col justify-between items-center text-center sm:text-left gap-4"
           >
             <div className="space-y-1">
               <h4 className="font-display font-bold text-brand-white text-sm uppercase">¿Su duda no aparece aquí?</h4>
