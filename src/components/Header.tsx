@@ -109,7 +109,7 @@ export default function Header({ phone }: HeaderProps) {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.2 }}
+            transition={{ duration: 0.15 }}
             className="fixed inset-0 z-50 md:hidden"
           >
             {/* Backdrop */}
@@ -123,7 +123,7 @@ export default function Header({ phone }: HeaderProps) {
               initial={{ x: "100%" }}
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
-              transition={{ type: "spring", stiffness: 300, damping: 40 }}
+              transition={{ type: "spring", stiffness: 600, damping: 60 }}
               className="absolute right-0 top-0 bottom-0 w-[85%] max-w-sm bg-brand-dark/98 backdrop-blur-xl border-l border-brand-peach/15 flex flex-col"
             >
               {/* Close button */}
