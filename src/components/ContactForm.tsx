@@ -68,7 +68,13 @@ export default function ContactForm() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 text-left">
           
           {/* Left Column: Direct Info, Bizum credentials*/}
-          <div className="lg:col-span-5">
+          <motion.div 
+            initial={{ opacity: 0, x: -120, y: -100 }}
+            whileInView={{ opacity: 1, x: 0, y: 0 }}
+            viewport={{ once: true, amount: 0.35 }}
+            transition={{ type: "spring", stiffness: 70, damping: 14, mass: 1.2 }}
+            className="lg:col-span-5"
+          >
             <div className="p-6 rounded-2xl premium-card space-y-6">
               <div className="space-y-4">
                 <h3 className="sm:text-lg font-bold text-transparent bg-gradient-to-r from-brand-coral via-brand-terracota to-brand-coral bg-clip-text uppercase ">INFORMACIÓN DE CONTACTOS</h3>
@@ -132,7 +138,7 @@ export default function ContactForm() {
 
             </div>
             </div>
-          </div>
+          </motion.div>
         </div>
 
       </div>
