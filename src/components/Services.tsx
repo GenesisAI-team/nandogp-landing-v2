@@ -161,14 +161,15 @@ export default function Services() {
           {SERVICES_DATA.map((service, index) => {
             const Icon = IconComponents[service.iconName] || Truck;
             const isExpanded = expandedCard === service.id;
+            const xDir = index % 2 === 0 ? -60 : 60;
             return (
               <motion.div
                 id={service.idAttribute}
                 key={service.id}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                initial={{ opacity: 0, x: xDir }}
+                whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true, margin: "-40px" }}
-                transition={{ duration: 0.5, delay: index * 0.08 }}
+                transition={{ duration: 0.75, delay: index * 0.08 }}
                 className="rounded-2xl premium-card overflow-hidden"
               >
                 {/* Header summary button clickable */}
