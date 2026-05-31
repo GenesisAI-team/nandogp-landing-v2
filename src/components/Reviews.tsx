@@ -279,8 +279,8 @@ export default function Reviews() {
                 initial={{ opacity: 0, y: 35 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-40px" }}
-                transition={{ duration: 0.5, delay: rIndex * 0.08 }}
-                className="p-6 rounded-2xl premium-card flex flex-col justify-between hover:border-brand-bronze/40 transition-all text-left relative"
+                transition={{ type: "spring", stiffness: 300, damping: 20, mass: 0.6, delay: rIndex * 0.08 }}
+                className="p-6 rounded-2xl premium-card flex flex-col justify-between hover:border-brand-bronze/40 text-left relative"
               >
                 
                 {/* Header Details */}

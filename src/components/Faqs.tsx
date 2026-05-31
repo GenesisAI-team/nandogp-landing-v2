@@ -96,7 +96,7 @@ export default function Faqs() {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, scale: 0.98 }}
                   transition={{ duration: 0.4, delay: index * 0.05 }}
-                  className={`rounded-2xl border transition-all overflow-hidden ${
+                  className={`rounded-2xl border transition-colors overflow-hidden ${
                     isOpen 
                       ? "premium-card border-brand-bronze/40" 
                       : "premium-card opacity-90"

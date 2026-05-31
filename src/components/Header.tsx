@@ -168,7 +168,7 @@ export default function Header({ phone }: HeaderProps) {
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: 0.05 + i * 0.06, duration: 0.3 }}
                     onClick={() => handleNavClick(item.href)}
-                    className="px-6 py-4 text-lg font-display uppercase tracking-wider text-brand-sand hover:text-brand-white hover:bg-brand-brown/40 transition-all border-b border-brand-peach/5"
+                    className="px-6 py-4 text-lg font-display uppercase tracking-wider text-brand-sand hover:text-brand-white hover:bg-brand-brown/40 border-b border-brand-peach/5"
                   >
                     {item.label}
                   </motion.a>
