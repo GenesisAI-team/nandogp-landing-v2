@@ -12,7 +12,7 @@ interface GoogleRatingCardProps {
   businessName?: string;
   ctaLabel?: string;
   className?: string;
-  size?: "sm" | "md" | "mobile";
+  size?:  "md" | "mobile";
 }
 
 const SIZE_PRESETS = {
@@ -24,24 +24,18 @@ const SIZE_PRESETS = {
     starGap: "",
     maxWidth: "max-w-[200px]",
     rounding: "rounded-xl",
-  },
-  sm: {
-    logo: "h-7 w-7",
-    star: "h-3 w-3",
-    text: "text-[9px]",
-    padding: "p-1.5",
-    starGap: "gap-0.5",
-    maxWidth: "max-w-[170px]",
-    rounding: "rounded-lg",
+    dimension: "",
+   
   },
   md: {
-    logo: "h-10 w-10",
+    logo: "h-8 w-30",
     star: "h-4 w-4",
-    text: "text-xs",
+    text: "text-sm",
     padding: "p-3",
     starGap: "gap-0.5",
-    maxWidth: "max-w-[260px]",
+    maxWidth: "",
     rounding: "rounded-xl",
+    dimension: "w-[15rem]",
   },
 } as const;
 
@@ -80,7 +74,7 @@ export default function GoogleRatingCard({
       title={isPlaceholder ? "Enlace de Google Reviews pendiente" : undefined}
       aria-label={ariaLabel}
       onClick={handleClick}
-      className={`inline-flex flex-col items-center ${preset.padding} ${preset.maxWidth} ${preset.rounding} bg-white shadow-[0_4px_20px_-4px_rgba(0,0,0,0.08)] hover:shadow-[0_6px_24px_-4px_rgba(0,0,0,0.12)] transition-shadow ${className}`}
+      className={`inline-flex flex-col items-center ${preset.dimension} ${preset.padding} ${preset.maxWidth} ${preset.rounding} bg-white shadow-[0_4px_20px_-4px_rgba(0,0,0,0.08)] hover:shadow-[0_6px_24px_-4px_rgba(0,0,0,0.12)] transition-shadow ${className}`}
     >
       <img
         src="/icons/google-icon.webp"

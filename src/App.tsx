@@ -29,6 +29,30 @@ export default function App() {
     
       <Header phone={PHONE_NUMBER} />
 
+      {/* Google Reviews Badge - Mobile */}
+      <div className="md:hidden w-full flex justify-center sm:pt-[5.5rem] pt-[5rem] pb-0 -mb-22">
+        <GoogleRatingCard
+          rating={GOOGLE_REVIEWS.rating}
+          reviewCount={GOOGLE_REVIEWS.reviewCount}
+          href={GOOGLE_REVIEWS.viewReviewsUrl}
+          businessName={GOOGLE_REVIEWS.businessName}
+          ctaLabel="Ver reseñas en Google"
+          size="mobile"
+        />
+      </div>
+
+      {/* Google Reviews Badge - Desktop */}
+      <div className="hidden md:flex w-full justify-center pt-[5.5rem] lg:pt-[6.5rem] pb-0 -mb-22 lg:-mb-35 xl:-mb-30">
+        <GoogleRatingCard
+          rating={GOOGLE_REVIEWS.rating}
+          reviewCount={GOOGLE_REVIEWS.reviewCount}
+          href={GOOGLE_REVIEWS.viewReviewsUrl}
+          businessName={GOOGLE_REVIEWS.businessName}
+          ctaLabel="Ver reseñas en Google"
+          size="md"
+        />
+      </div>
+
       <SidebarMenu />
 
       {/* Main Content Sections */}
