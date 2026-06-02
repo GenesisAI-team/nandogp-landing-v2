@@ -5,7 +5,7 @@
 
 export const GOOGLE_REVIEWS = {
   businessName: "NANDO-GP",
-  rating: 4.9,
+  rating: 5,
   reviewCount: 5,
 
   // Sustituir cuando tengas la ficha real:

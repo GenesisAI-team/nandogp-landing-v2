@@ -116,7 +116,7 @@ export default function Reviews() {
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            className="lg:col-span-4 p-6 rounded-2xl premium-card flex flex-col items-center justify-center space-y-3"
+            className="lg:col-span-4 p-6 rounded-2xl bg-white shadow-md border border-gray-100 flex flex-col items-center justify-center space-y-3"
           >
             {/* Google Identity Logo & text */}
             <div className="flex items-center space-x-2 text-brand-white">
@@ -138,7 +138,7 @@ export default function Reviews() {
                   d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"
                 />
               </svg>
-              <span className="font-sans font-bold text-xs tracking-widest text-[#FAFBF7] uppercase">Opiniones de Google</span>
+              <span className="font-sans font-bold text-xs tracking-widest text-gray-600 uppercase">Opiniones de Google</span>
             </div>
 
             {/* Stars summary */}
@@ -148,10 +148,10 @@ export default function Reviews() {
                   <Star key={s} className="w-5 h-5 fill-amber-400" />
                 ))}
               </div>
-              <p className="font-mono text-xl font-bold text-brand-sand mt-1">
+              <p className="font-mono text-xl font-bold text-gray-900 mt-1">
                 {averageRating.toFixed(1)} / 5.0
               </p>
-              <p className="text-[10px] text-brand-peach/50 uppercase tracking-wider font-mono">
+              <p className="text-[10px] text-gray-500 uppercase tracking-wider font-mono">
                 {totalCount} Reseñas Totales
               </p>
             </div>
@@ -159,9 +159,9 @@ export default function Reviews() {
             <button
               id="write-review-btn"
               onClick={() => setShowForm(!showForm)}
-              className="mt-2 w-full flex items-center justify-center space-x-2 py-2 px-4 rounded-xl bg-gradient-to-r from-brand-brown to-brand-dark hover:from-brand-terracotta border border-brand-peach/25 text-xs font-semibold text-brand-white cursor-pointer transition-all hover:scale-103"
+              className="mt-2 w-full flex items-center justify-center space-x-2 py-2 px-4 rounded-xl bg-white border-1 border-gray-500 text-xs font-bold text-gray-900 cursor-pointer transition-all hover:scale-103"
             >
-              <PenTool className="w-3.5 h-3.5 text-brand-coral" />
+              <PenTool className="w-3.5 h-3.5 text-gray-900" />
               <span>Redactar Reseña</span>
             </button>
           </motion.div>
@@ -280,7 +280,7 @@ export default function Reviews() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-40px" }}
                 transition={{ type: "spring", stiffness: 300, damping: 20, mass: 0.6, delay: rIndex * 0.08 }}
-                className="p-6 rounded-2xl premium-card flex flex-col justify-between hover:border-brand-bronze/40 text-left relative"
+                className="p-6 rounded-2xl bg-white shadow-md border border-gray-100 flex flex-col justify-between hover:shadow-lg text-left relative"
               >
                 
                 {/* Header Details */}
@@ -294,7 +294,7 @@ export default function Reviews() {
                         className="w-10 h-10 rounded-full object-cover border border-brand-peach/10 bg-brand-brown"
                       />
                       <div>
-                        <h4 className="text-xs font-bold text-brand-white truncate max-w-[130px] sm:max-w-none">
+                        <h4 className="text-xs font-bold text-gray-900 truncate max-w-[130px] sm:max-w-none">
                           {review.authorName}
                         </h4>
                         <span className="text-[9px] text-[#4285F4] font-mono tracking-wider flex items-center space-x-1 uppercase mt-0.5">
@@ -304,7 +304,7 @@ export default function Reviews() {
                     </div>
 
                     {/* Google original review visual shield */}
-                    <div className="p-1.5 rounded-md bg-brand-brown/40 border border-brand-peach/10">
+                    <div className="p-1.5 rounded-md bg-gray-100 border border-gray-200">
                       <img
                         src="/icons/g-icon.webp"
                         alt="Google"
@@ -326,16 +326,16 @@ export default function Reviews() {
                   </div>
 
                   {/* Comment */}
-                  <p className="text-xs text-brand-peach/85 mt-3.5 leading-relaxed font-sans line-clamp-4">
+                  <p className="text-xs text-gray-700 mt-3.5 leading-relaxed font-sans line-clamp-4">
                     "{review.text}"
                   </p>
                 </div>
 
                 {/* Footer review age tag */}
-                <div className="pt-4 border-t border-brand-peach/10 mt-5 flex items-center justify-between text-[10px] text-brand-peach/40 font-mono">
+                <div className="pt-4 border-t border-gray-200 mt-5 flex items-center justify-between text-[10px] text-gray-500 font-mono">
                   <span>{review.relativeTimeDescription}</span>
-                  <div className="flex items-center space-x-1 text-brand-sand">
-                    <ThumbsUp className="w-3 h-3 text-brand-coral" />
+                  <div className="flex items-center space-x-1 text-gray-600">
+                    <ThumbsUp className="w-3 h-3 text-gray-500" />
                     <span>Útil</span>
                   </div>
                 </div>
