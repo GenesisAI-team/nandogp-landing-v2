@@ -5,7 +5,7 @@
 
 import { PhoneCall } from "lucide-react";
 
-const phoneNumber = "+34 605 47 49 30";
+const phoneNumber = "+34 653 89 63 52";
 
 export default function PhoneWidget() {
   return (
