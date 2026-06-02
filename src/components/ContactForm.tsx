@@ -73,7 +73,7 @@ export default function ContactForm() {
             whileInView={{ opacity: 1, x: 0, y: 0 }}
             viewport={{ once: true, amount: 0.35 }}
             transition={{ type: "spring", stiffness: 70, damping: 14, mass: 1.2 }}
-            className="lg:col-span-5"
+            className="lg:col-start-4 lg:col-span-6"
           >
             <div className="p-6 rounded-2xl premium-card space-y-6">
               <div className="space-y-4">
