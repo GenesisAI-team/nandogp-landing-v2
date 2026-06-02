@@ -4,18 +4,20 @@
  */
 
 import { ShieldCheck } from "lucide-react";
+import GoogleRatingCard from "./GoogleRatingCard";
+import { GOOGLE_REVIEWS } from "../config/googleReviews";
 
 const PHONE_NUMBER = "+34 605 47 49 30";
 
 export default function Footer() {
   return (
     <footer className="bg-brand-black border-t border-brand-peach/10 py-16 relative">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-left">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         
         <div className="grid grid-cols-1 md:grid-cols-12 gap-12 pb-12 border-b border-brand-peach/5">
           
           {/* Branding Column */}
-          <div className="md:col-span-5 space-y-4">
+          <div className="flex flex-col items-center md:col-span-5 space-y-4">
             <span className="font-display font-extrabold text-3xl uppercase text-gradient-gold">
               NANDO<span className="font-sans font-light text-brand-coral ml-1">-GP</span>
             </span>
@@ -47,10 +49,21 @@ export default function Footer() {
               Para reservas extraordinarias, incidencias o reclamaciones directas:
             </p>
             <div className="font-mono text-xs space-y-1 text-brand-sand">
-              <p>📞 Whatsapp / Tel: <strong className="text-brand-white">{PHONE_NUMBER}</strong></p>
+              <p>📞 Tel: <strong className="text-brand-white">+34 653 89 63 52</strong></p>
+              <p>📞 Whatsapp: <strong className="text-brand-white">{PHONE_NUMBER}</strong></p>
               <p>✉ Soporte: <strong className="text-brand-white">soporte@nandogp.es</strong></p>
               <p>📍 Central Operativa: Madrid, España</p>
             </div>
+          </div>
+
+          <div className="md:col-span-12 md:col-start-2 flex justify-center pt-4">
+            <GoogleRatingCard
+              rating={GOOGLE_REVIEWS.rating}
+              reviewCount={GOOGLE_REVIEWS.reviewCount}
+              href={GOOGLE_REVIEWS.viewReviewsUrl}
+              businessName={GOOGLE_REVIEWS.businessName}
+              size="md"
+            />
           </div>
 
         </div>
