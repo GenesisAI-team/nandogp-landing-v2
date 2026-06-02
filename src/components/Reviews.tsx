@@ -305,12 +305,11 @@ export default function Reviews() {
 
                     {/* Google original review visual shield */}
                     <div className="p-1.5 rounded-md bg-brand-brown/40 border border-brand-peach/10">
-                      <svg className="w-3.5 h-3.5" viewBox="0 0 24 24">
-                        <path
-                          fill="#EA4335"
-                          d="M12.24 10.285V14.4h6.887c-.648 2.41-2.519 4.13-5.136 4.13A5.86 5.86 0 018 12.67a5.86 5.86 0 015.991-5.865c1.554 0 2.97.534 4.103 1.488l3.111-3.111C19.349 3.473 16.898 2.34 14 2.34c-5.334 0-9.66 4.326-9.66 9.66 0 5.334 4.326 9.66 9.66 9.66 5.334 0 9.15-3.753 9.15-9.15 0-.61-.054-1.2-.162-1.785H12.24z"
-                        />
-                      </svg>
+                      <img
+                        src="/icons/g-icon.webp"
+                        alt="Google"
+                        className="w-3.5 h-3.5 object-contain"
+                      />
                     </div>
                   </div>
 
