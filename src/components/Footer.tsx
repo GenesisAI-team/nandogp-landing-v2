@@ -51,8 +51,9 @@ export default function Footer() {
             <div className="font-mono text-xs space-y-1 text-brand-sand">
               <p>📞 Tel: <strong className="text-brand-white">+34 653 89 63 52</strong></p>
               <p>📞 Whatsapp: <strong className="text-brand-white">{PHONE_NUMBER}</strong></p>
-              <p>✉ Soporte: <strong className="text-brand-white">soporte@nandogp.es</strong></p>
-              <p>📍 Central Operativa: Madrid, España</p>
+              <p>✉ Soporte: <strong className="text-brand-white">transportesymudanzasnandogp
+                @gmail.com</strong></p>
+              <p>📍 Central Operativa: Pamplona, España</p>
             </div>
           </div>
 
