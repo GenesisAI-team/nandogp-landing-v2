@@ -6,6 +6,8 @@
 import { useState } from "react";
 import { Phone, Menu, X, MessageCircle } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
+import GoogleRatingCard from "./GoogleRatingCard";
+import { GOOGLE_REVIEWS } from "../config/googleReviews";
 
 interface HeaderProps {
   phone: string;
@@ -39,8 +41,7 @@ export default function Header({ phone }: HeaderProps) {
     window.open(`https://wa.me/${num}?text=${text}`, "_blank");
   };
 
-  const phoneClean = phone.replace(/\s+/g, "");
-  const phoneTel = `tel:${phoneClean}`;
+  const phoneTel = `tel:653 89 63 52`;
 
   return (
     <>
@@ -101,6 +102,19 @@ export default function Header({ phone }: HeaderProps) {
 
         </div>
       </header>
+
+      {/* Google Reviews Badge - Mobile only, sits flush below fixed header */}
+      <div className="md:hidden w-full flex justify-center sm:pt-[5.5rem] pt-[5rem] pb-0 -mb-22">
+              <GoogleRatingCard
+                rating={GOOGLE_REVIEWS.rating}
+                reviewCount={GOOGLE_REVIEWS.reviewCount}
+                href={GOOGLE_REVIEWS.viewReviewsUrl}
+                businessName={GOOGLE_REVIEWS.businessName}
+                ctaLabel="Ver reseñas en Google"
+                size="mobile"
+              />
+      </div>
+
 
       {/* Mobile menu overlay */}
       <AnimatePresence>

@@ -13,6 +13,8 @@ import ContactForm from "./components/ContactForm";
 import SectionTransition from "./components/SectionTransition";
 import Footer from "./components/Footer";
 import FloatingContact from "./components/FloatingContact";
+import GoogleRatingCard from "./components/GoogleRatingCard";
+import { GOOGLE_REVIEWS } from "./config/googleReviews";
 
 const PHONE_NUMBER = "+34 605 47 49 30";
 
