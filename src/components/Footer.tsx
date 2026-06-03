@@ -3,24 +3,21 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import { useState } from "react";
+import { Link } from "react-router-dom";
 import { ShieldCheck } from "lucide-react";
 import GoogleRatingCard from "./GoogleRatingCard";
-import LegalSheet from "./LegalSheet";
 import { GOOGLE_REVIEWS } from "../config/googleReviews";
-import { LegalDocType } from "../types";
 
 const PHONE_NUMBER = "+34 605 47 49 30";
 
-const LEGAL_LINKS: { label: string; href: string; section: Exclude<LegalDocType, null> }[] = [
-  { label: "Aviso Legal", href: "/aviso-legal", section: "aviso-legal" },
-  { label: "Política de Privacidad", href: "/privacidad", section: "privacidad" },
-  { label: "Términos y Condiciones del Servicio", href: "/terminos", section: "terminos" },
-  { label: "Política de Cookies", href: "/cookies", section: "cookies" },
+const LEGAL_LINKS = [
+  { label: "Aviso Legal", to: "/aviso-legal" },
+  { label: "Política de Privacidad", to: "/privacidad" },
+  { label: "Términos y Condiciones del Servicio", to: "/terminos" },
+  { label: "Política de Cookies", to: "/cookies" },
 ];
 
 export default function Footer() {
-  const [legalOpen, setLegalOpen] = useState<LegalDocType>(null);
   return (
     <footer className="bg-brand-black border-t border-brand-peach/10 py-16 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -87,17 +84,13 @@ export default function Footer() {
           
           <div className="flex space-x-4">
             {LEGAL_LINKS.map((link, i) => (
-              <span key={link.section} className="flex items-center space-x-4">
-                <a
-                  href={link.href}
-                  onClick={(e) => {
-                    e.preventDefault();
-                    setLegalOpen(link.section);
-                  }}
+              <span key={link.to} className="flex items-center space-x-4">
+                <Link
+                  to={link.to}
                   className="hover:text-brand-white transition-all"
                 >
                   {link.label}
-                </a>
+                </Link>
                 {i < LEGAL_LINKS.length - 1 && <span>•</span>}
               </span>
             ))}
@@ -106,12 +99,6 @@ export default function Footer() {
         </div>
 
       </div>
-
-      <LegalSheet
-        isOpen={legalOpen !== null}
-        onClose={() => setLegalOpen(null)}
-        section={legalOpen}
-      />
 
     </footer>
   );
