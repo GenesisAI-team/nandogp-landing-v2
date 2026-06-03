@@ -12,7 +12,9 @@ import { BlockRenderer } from "./LegalBlockRenderer";
 import { LEGAL_CONTENT } from "../config/legalData";
 import { LegalDocType } from "../types";
 import SEOMeta from "./SEOMeta";
+import StructuredData from "./StructuredData";
 import { getLegalSEO } from "../config/seo";
+import { WEBSITE_SCHEMA, getBreadcrumbSchema } from "../config/schema";
 
 const PHONE_NUMBER = "+34 605 47 49 30";
 
@@ -35,6 +37,9 @@ export default function LegalPage({ slug }: LegalPageProps) {
   return (
     <div className="nando-bg min-h-screen text-brand-white font-sans selection:text-brand-white relative overflow-x-hidden">
       {seo && <SEOMeta data={seo} />}
+      <StructuredData
+        schemas={[WEBSITE_SCHEMA, getBreadcrumbSchema(slug, data.title)]}
+      />
       <Header phone={PHONE_NUMBER} />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 pb-16">
