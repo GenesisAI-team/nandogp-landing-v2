@@ -18,7 +18,7 @@ const OG_IMAGE = `${BASE_URL}/og-nando-image.jpg`;
 const SITE_NAME = "NANDO-GP Mudanzas";
 
 export const SEO_HOME: SEOData = {
-  title: "Mudanzas Nacionales y Portes Express | NANDO-GP Mudanzas España",
+  title: "NANDO-GP Mudanzas | Mudanzas y Transportes en toda España",
   description:
     "Mudanzas en Navarra y toda España. Servicio profesional de mudanzas locales, nacionales, de oficina, portes express, embalaje y montaje de muebles. Presupuesto sin compromiso.",
   canonical: `${BASE_URL}/`,
