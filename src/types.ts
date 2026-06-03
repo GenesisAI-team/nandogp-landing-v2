@@ -47,3 +47,29 @@ export interface RouteEstimatorState {
   calculatedCost: number;
   currentStep: number; // 1: Datos mudanza, 2: Servicios Extra, 3: Datos de Contacto y Resumen
 }
+
+// === Legal content structured types ===
+
+export interface TextSegment {
+  text: string;
+  bold?: boolean;
+  italic?: boolean;
+}
+
+export type LegalBlock =
+  | { type: "heading"; text: string }
+  | { type: "paragraph"; segments: TextSegment[] }
+  | { type: "list"; ordered: boolean; items: TextSegment[][] }
+  | { type: "infoCard"; fields: { label: string; value: string }[] };
+
+export interface LegalSection {
+  title: string;
+  blocks: LegalBlock[];
+}
+
+export type LegalDocType =
+  | "aviso-legal"
+  | "privacidad"
+  | "terminos"
+  | "cookies"
+  | null;
