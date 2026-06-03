@@ -11,6 +11,8 @@ import FloatingContact from "./FloatingContact";
 import { BlockRenderer } from "./LegalBlockRenderer";
 import { LEGAL_CONTENT } from "../config/legalData";
 import { LegalDocType } from "../types";
+import SEOMeta from "./SEOMeta";
+import { getLegalSEO } from "../config/seo";
 
 const PHONE_NUMBER = "+34 605 47 49 30";
 
@@ -20,6 +22,7 @@ interface LegalPageProps {
 
 export default function LegalPage({ slug }: LegalPageProps) {
   const data = LEGAL_CONTENT[slug];
+  const seo = getLegalSEO(slug);
 
   if (!data) {
     return (
@@ -31,6 +34,7 @@ export default function LegalPage({ slug }: LegalPageProps) {
 
   return (
     <div className="nando-bg min-h-screen text-brand-white font-sans selection:text-brand-white relative overflow-x-hidden">
+      {seo && <SEOMeta data={seo} />}
       <Header phone={PHONE_NUMBER} />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 pb-16">

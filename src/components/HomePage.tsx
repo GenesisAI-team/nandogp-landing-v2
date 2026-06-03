@@ -15,12 +15,15 @@ import Footer from "./Footer";
 import FloatingContact from "./FloatingContact";
 import GoogleRatingCard from "./GoogleRatingCard";
 import { GOOGLE_REVIEWS } from "../config/googleReviews";
+import SEOMeta from "./SEOMeta";
+import { SEO_HOME } from "../config/seo";
 
 const PHONE_NUMBER = "+34 605 47 49 30";
 
 export default function HomePage() {
   return (
     <div className="nando-bg min-h-screen text-brand-white font-sans selection:text-brand-white relative overflow-x-hidden">
+      <SEOMeta data={SEO_HOME} />
       <Header phone={PHONE_NUMBER} />
 
       {/* Google Reviews Badge - Mobile */}
