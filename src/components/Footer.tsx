@@ -75,11 +75,13 @@ export default function Footer() {
           <p>© 2026 NANDO-GP Mudanzas y Transportes. Todos los derechos reservados. Diseñado con total fluidez y dinamismo.</p>
           
           <div className="flex space-x-4">
+            <a href="#" className="hover:text-brand-white transition-all">Aviso Legal</a>
+            <span>•</span>
             <a href="#" className="hover:text-brand-white transition-all">Política de Privacidad</a>
             <span>•</span>
-            <a href="#" className="hover:text-brand-white transition-all">Términos del Servicio</a>
+            <a href="#" className="hover:text-brand-white transition-all">Términos y Condiciones del Servicio</a>
             <span>•</span>
-            <a href="#" className="hover:text-brand-white transition-all">Seguro de Carga (LOTT)</a>
+            <a href="#" className="hover:text-brand-white transition-all">Política de Cookies</a>
           </div>
 
         </div>
