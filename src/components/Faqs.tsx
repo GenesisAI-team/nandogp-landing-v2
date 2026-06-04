@@ -5,7 +5,7 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import { HelpCircle, ChevronDown, Award, Sparkles, MessageSquare, ShieldAlert, ArrowRight, Phone } from "lucide-react";
+import { HelpCircle, ChevronDown, ArrowRight, Phone } from "lucide-react";
 import { FAQ_DATA } from "../data";
 
 export default function Faqs() {
@@ -76,7 +76,7 @@ export default function Faqs() {
               id={`faq-cat-filter-${cat.id}`}
               key={cat.id}
               onClick={() => {
-                setActiveCategory(cat.id as any);
+                setActiveCategory(cat.id as typeof activeCategory);
                 setOpenFaqId(null); // Close active one to let them explore cleanly
               }}
               className={`py-2 px-4 rounded-xl text-xs font-semibold tracking-wider transition-all duration-300 cursor-pointer ${

@@ -5,7 +5,7 @@
 
 import { useState, useRef } from "react";
 import { motion, AnimatePresence, useInView } from "motion/react";
-import { ArrowRight, Phone, ShieldCheck, Heart, Clock } from "lucide-react";
+import { ArrowRight, Phone, ShieldCheck } from "lucide-react";
 
 interface StackPhoto {
   id: number;

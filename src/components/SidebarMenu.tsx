@@ -3,57 +3,11 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "motion/react";
-import { Phone, MessageSquare, Calculator, Star, HelpCircle, X, ChevronLeft, Menu } from "lucide-react";
+import { useState } from "react";
+import { motion } from "motion/react";
 
 export default function SidebarMenu() {
   const [isOpen, setIsOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState("");
-
-  // Track scroll position to highlight sections or adapt the side bar design
-  useEffect(() => {
-    const handleScroll = () => {
-      const sections = ["inicio", "servicios", "calculadora", "opiniones", "faq", "contacto"];
-      const scrollPos = window.scrollY + window.innerHeight / 3;
-
-      for (const section of sections) {
-        const el = document.getElementById(section);
-        if (el) {
-          const top = el.offsetTop;
-          const height = el.offsetHeight;
-          if (scrollPos >= top && scrollPos < top + height) {
-            setActiveSection(section);
-            break;
-          }
-        }
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
-  const menuItems = [
-    { id: "inicio", label: "Inicio", icon: Menu },
-    { id: "servicios", label: "Servicios", icon: MessageSquare },
-    { id: "opiniones", label: "Reseñas", icon: Star },
-    { id: "faq", label: "Páginas FAQ", icon: HelpCircle },
-    { id: "contacto", label: "Contacto", icon: Phone,  highlight: true },
-  ];
-
-  const handleScrollTo = (id: string) => {
-    const el = document.getElementById(id);
-    if (el) {
-      el.scrollIntoView({ behavior: "smooth" });
-      setIsOpen(false);
-    }
-  };
-
-  const handleWhatsApp = () => {
-    const text = encodeURIComponent("¡Hola NANDO-GP! Me gustaría solicitar información para un servicio de mudanza.");
-    window.open(`https://wa.me/34605911930?text=${text}`, "_blank");
-  };
 
   return (
     <>

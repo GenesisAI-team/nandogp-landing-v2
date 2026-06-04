@@ -3,47 +3,10 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import React, { useState } from "react";
 import { motion } from "motion/react";
-import { Phone, Mail, MapPin, Clock, Send, CheckCircle2, MessageSquare, CreditCard, Award } from "lucide-react";
+import { Phone, Mail, Clock, CreditCard } from "lucide-react";
 
 export default function ContactForm() {
-  const [name, setName] = useState("");
-  const [conPhone, setConPhone] = useState("");
-  const [conEmail, setConEmail] = useState("");
-  const [message, setMessage] = useState("");
-  const [submitted, setSubmitted] = useState(false);
-
-  const handleContactSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!name || !conPhone) return;
-
-    // Persist local message thread
-    const savedMsg = JSON.parse(localStorage.getItem("nandogp_messages") || "[]");
-    savedMsg.unshift({
-      id: "msg_" + Date.now(),
-      date: new Date().toLocaleDateString("es-ES"),
-      name,
-      conPhone,
-      conEmail,
-      message
-    });
-    localStorage.setItem("nandogp_messages", JSON.stringify(savedMsg));
-
-    setSubmitted(true);
-    setName("");
-    setConPhone("");
-    setConEmail("");
-    setMessage("");
-    setTimeout(() => {
-      setSubmitted(false);
-    }, 4000);
-  };
-
-  const handleWhatsApp = () => {
-    const text = encodeURIComponent(`Hola NANDO-GP, os escribo desde la sección de contacto de la web. Mi nombre es ${name || "un cliente"}.`);
-    window.open(`https://wa.me/34605911930?text=${text}`, "_blank");
-  };
 
   return (
     <section 

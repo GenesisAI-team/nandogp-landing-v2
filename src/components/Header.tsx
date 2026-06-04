@@ -4,7 +4,7 @@
  */
 
 import { useState } from "react";
-import { Phone, Menu, X, MessageCircle } from "lucide-react";
+import { Phone, Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
 import GoogleRatingCard from "./GoogleRatingCard";
 import { GOOGLE_REVIEWS } from "../config/googleReviews";
@@ -180,7 +180,6 @@ export default function Header({ phone }: HeaderProps) {
                         reviewCount={GOOGLE_REVIEWS.reviewCount}
                         href={GOOGLE_REVIEWS.viewReviewsUrl}
                         businessName={GOOGLE_REVIEWS.businessName}
-                        ctaLabel="Ver reseñas en Google"
                         size="mobile"
                         className="mx-4 mt-4 self-start"
               />     

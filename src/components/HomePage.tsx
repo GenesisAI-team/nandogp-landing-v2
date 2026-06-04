@@ -36,7 +36,6 @@ export default function HomePage() {
           reviewCount={GOOGLE_REVIEWS.reviewCount}
           href={GOOGLE_REVIEWS.viewReviewsUrl}
           businessName={GOOGLE_REVIEWS.businessName}
-          ctaLabel="Ver reseñas en Google"
           size="mobile"
         />
       </div>
@@ -48,7 +47,6 @@ export default function HomePage() {
           reviewCount={GOOGLE_REVIEWS.reviewCount}
           href={GOOGLE_REVIEWS.viewReviewsUrl}
           businessName={GOOGLE_REVIEWS.businessName}
-          ctaLabel="Ver reseñas en Google"
           size="md"
         />
       </div>

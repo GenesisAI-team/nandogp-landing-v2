@@ -5,8 +5,7 @@
 
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import { Truck, Wrench, Trash2, Package, Zap, CheckCircle2, ChevronDown, ArrowRight, ShieldCheck } from "lucide-react";
-import { MovingService } from "../types";
+import { Truck, Wrench, Trash2, Package, Zap, CheckCircle2, ChevronDown, ShieldCheck } from "lucide-react";
 import { SERVICES_DATA } from "../data";
 
 

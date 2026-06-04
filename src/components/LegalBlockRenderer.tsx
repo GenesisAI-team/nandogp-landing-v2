@@ -6,7 +6,7 @@
 import React from "react";
 import { LegalBlock, TextSegment } from "../types";
 
-export function renderSegments(segments: TextSegment[], key?: string): React.ReactNode {
+function renderSegments(segments: TextSegment[], key?: string): React.ReactNode {
   return segments.map((seg, i) => {
     if (seg.bold) {
       return <strong key={key ? `${key}-${i}` : i}>{seg.text}</strong>;

@@ -10,7 +10,6 @@ interface GoogleRatingCardProps {
   reviewCount: number;
   href?: string;
   businessName?: string;
-  ctaLabel?: string;
   className?: string;
   size?:  "md" | "mobile";
 }
@@ -44,7 +43,6 @@ export default function GoogleRatingCard({
   reviewCount,
   href = "#",
   businessName,
-  ctaLabel,
   className = "",
   size = "md",
 }: GoogleRatingCardProps) {
