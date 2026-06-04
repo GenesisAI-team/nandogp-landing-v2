@@ -3,36 +3,28 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import { Star, MessageSquare, Check, Award, PenTool, ShieldCheck, ThumbsUp, MapPin } from "lucide-react";
+import { Star, Check, PenTool, ShieldCheck, ThumbsUp, MapPin } from "lucide-react";
 import { GoogleReview } from "../types";
 import { INITIAL_REVIEWS } from "../data";
 
 export default function Reviews() {
-  const [reviews, setReviews] = useState<GoogleReview[]>([]);
+  const [reviews, setReviews] = useState<GoogleReview[]>(() => {
+    const saved = localStorage.getItem("nandogp_reviews");
+    if (saved) {
+      try { return JSON.parse(saved); }
+      catch { return INITIAL_REVIEWS; }
+    }
+    localStorage.setItem("nandogp_reviews", JSON.stringify(INITIAL_REVIEWS));
+    return INITIAL_REVIEWS;
+  });
   const [showForm, setShowForm] = useState(false);
-  
-  // Review inputs
+
   const [authorName, setAuthorName] = useState("");
   const [rating, setRating] = useState(5);
   const [text, setText] = useState("");
   const [successMsg, setSuccessMsg] = useState(false);
-
-  // Load from local storage or pre-populate with default reviews
-  useEffect(() => {
-    const saved = localStorage.getItem("nandogp_reviews");
-    if (saved) {
-      try {
-        setReviews(JSON.parse(saved));
-      } catch (e) {
-        setReviews(INITIAL_REVIEWS);
-      }
-    } else {
-      setReviews(INITIAL_REVIEWS);
-      localStorage.setItem("nandogp_reviews", JSON.stringify(INITIAL_REVIEWS));
-    }
-  }, []);
 
   const handleSubmitReview = (e: React.FormEvent) => {
     e.preventDefault();
