@@ -1,0 +1,58 @@
+name: OpenCode PR Review
+
+on:
+  pull_request:
+    types: [opened, reopened, ready_for_review]
+
+jobs:
+  ai-review:
+    name: opencode-review
+    runs-on: ubuntu-latest
+
+    permissions:
+      id-token: write
+      contents: read
+      pull-requests: write
+      issues: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 1
+          persist-credentials: false
+
+      - name: Run OpenCode review
+        uses: anomalyco/opencode/github@latest
+        continue-on-error: true
+        env:
+          OPENCODE_API_KEY: ${{ secrets.OPENCODE_API_KEY }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          model: opencode-go/deepseek-v4-flash
+          use_github_token: true
+          prompt: |
+            Review this pull request for a React + TypeScript + Vite + Tailwind landing page.
+
+            Project rules:
+            - Package manager is PNPM only. Never suggest npm.
+            - Do not suggest large rewrites unless there is a real maintainability or bug risk.
+            - Focus on real issues, not personal style preferences.
+            - Keep the review concise and practical.
+
+            Check specifically:
+            - Build-breaking changes.
+            - TypeScript problems.
+            - React component structure.
+            - Tailwind responsive issues.
+            - Accessibility problems.
+            - Broken links, buttons, forms or floating widgets.
+            - Bad mobile behavior.
+            - Unnecessary complexity.
+            - Risky changes to assets, public files or deployment configuration.
+
+            Output:
+            - Start with a short summary of what changed.
+            - Then list critical issues, if any.
+            - Then list minor improvements, if any.
+            - If everything looks good, say that clearly.
