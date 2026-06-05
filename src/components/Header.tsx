@@ -6,8 +6,6 @@
 import { useState } from "react";
 import { Phone, Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
-import GoogleRatingCard from "./GoogleRatingCard";
-import { GOOGLE_REVIEWS } from "../config/googleReviews";
 
 interface HeaderProps {
   phone: string;
@@ -175,14 +173,6 @@ export default function Header({ phone }: HeaderProps) {
                   </motion.a>
                 ))}
               </nav>
-              <GoogleRatingCard
-                        rating={GOOGLE_REVIEWS.rating}
-                        reviewCount={GOOGLE_REVIEWS.reviewCount}
-                        href={GOOGLE_REVIEWS.viewReviewsUrl}
-                        businessName={GOOGLE_REVIEWS.businessName}
-                        size="mobile"
-                        className="mx-4 mt-4 self-start"
-              />     
             </motion.div>
           </motion.div>
         )}
