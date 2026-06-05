@@ -30,7 +30,7 @@ export default function HomePage() {
       <Header phone={PHONE_NUMBER} />
 
       {/* Google Reviews Badge - Mobile */}
-      <div className="md:hidden w-full flex justify-center sm:pt-[5.5rem] pt-[5rem] pb-0 -mb-22">
+      <div className="hidden w-full flex justify-center sm:pt-[5.5rem] pt-[5rem] pb-0 -mb-22">
         <GoogleRatingCard
           rating={GOOGLE_REVIEWS.rating}
           reviewCount={GOOGLE_REVIEWS.reviewCount}
