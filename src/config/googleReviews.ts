@@ -9,5 +9,5 @@ export const GOOGLE_REVIEWS = {
   reviewCount: 5,
 
   viewReviewsUrl: "https://g.page/r/CYt1ZazleFiGEBM/review",
-  writeReviewUrl: "https://search.google.com/local/writereview?placeid=TU_PLACE_ID",
+  writeReviewUrl: "https://g.page/r/CYt1ZazleFiGEBM/review",
 } as const;
