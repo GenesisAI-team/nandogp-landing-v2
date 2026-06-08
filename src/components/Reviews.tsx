@@ -3,63 +3,15 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import React, { useState } from "react";
-import { motion, AnimatePresence } from "motion/react";
-import { Star, Check, PenTool, ShieldCheck, ThumbsUp, MapPin } from "lucide-react";
-import { GoogleReview } from "../types";
+import React from "react";
+import { motion } from "motion/react";
+import { Star, PenTool, ShieldCheck, ThumbsUp, MapPin } from "lucide-react";
 import { INITIAL_REVIEWS } from "../data";
+import { GOOGLE_REVIEWS } from "../config/googleReviews";
 
 export default function Reviews() {
-  const [reviews, setReviews] = useState<GoogleReview[]>(() => {
-    const saved = localStorage.getItem("nandogp_reviews");
-    if (saved) {
-      try { return JSON.parse(saved); }
-      catch { return INITIAL_REVIEWS; }
-    }
-    localStorage.setItem("nandogp_reviews", JSON.stringify(INITIAL_REVIEWS));
-    return INITIAL_REVIEWS;
-  });
-  const [showForm, setShowForm] = useState(false);
-
-  const [authorName, setAuthorName] = useState("");
-  const [rating, setRating] = useState(5);
-  const [text, setText] = useState("");
-  const [successMsg, setSuccessMsg] = useState(false);
-
-  const handleSubmitReview = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!authorName || !text) return;
-
-    const newReview: GoogleReview = {
-      id: "user_rev_" + Date.now(),
-      idAttribute: "user-rev-" + Date.now(),
-      authorName,
-      profilePhotoUrl: `https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=120`, // Generic lovely avatar
-      rating,
-      relativeTimeDescription: "Hace unos segundos",
-      text,
-      isLocal: true
-    };
-
-    setReviews((prev) => {
-      const updated = [newReview, ...prev];
-      localStorage.setItem("nandogp_reviews", JSON.stringify(updated));
-      return updated;
-    });
-
-    setAuthorName("");
-    setRating(5);
-    setText("");
-    setSuccessMsg(true);
-    setTimeout(() => {
-      setSuccessMsg(false);
-      setShowForm(false);
-    }, 2500);
-  };
-
-  // Compute stats
-  const averageRating = 5.0; // Everyone loves NANDO-GP
-  const totalCount = reviews.length;
+  const averageRating = 5.0;
+  const totalCount = INITIAL_REVIEWS.length;
 
   return (
     <section 
@@ -99,7 +51,7 @@ export default function Reviews() {
               viewport={{ once: true, margin: "-100px" }}
               className="text-[0.95rem] sm:text-base font-sans font-semibold max-w-xl text-on-bg"
             >
-              La transparencia es nuestro pilar fundamental. Aquí puede consultar las valoraciones reales importadas directamente de nuestro perfil de Google, así como redactar su propia valoración.
+              La transparencia es nuestro pilar fundamental. Aquí puede consultar las valoraciones reales importadas directamente de nuestro perfil de Google, así como redactar su propia valoración directamente en Google.
             </motion.p>
           </div>
 
@@ -148,122 +100,23 @@ export default function Reviews() {
               </p>
             </div>
 
-            <button
+            <a
               id="write-review-btn"
-              onClick={() => setShowForm(!showForm)}
-              className="mt-2 w-full flex items-center justify-center space-x-2 py-2 px-4 rounded-xl bg-white border-1 border-gray-500 text-xs font-bold text-gray-900 cursor-pointer transition-all hover:scale-103"
+              href={GOOGLE_REVIEWS.writeReviewUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-2 w-full inline-flex items-center justify-center space-x-2 py-2 px-4 rounded-xl bg-white border-1 border-gray-500 text-xs font-bold text-gray-900 cursor-pointer transition-all hover:scale-103"
             >
               <PenTool className="w-3.5 h-3.5 text-gray-900" />
               <span>Redactar Reseña</span>
-            </button>
+            </a>
           </motion.div>
 
         </div>
 
-        {/* Floating/Collapsible Create Review Form */}
-        <AnimatePresence>
-          {showForm && (
-            <motion.div
-              id="review-submission-box"
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: "auto" }}
-              exit={{ opacity: 0, height: 0 }}
-              transition={{ duration: 0.4 }}
-              className="overflow-hidden mb-12 max-w-2xl mx-auto rounded-3xl premium-card p-6 text-left"
-            >
-              <form onSubmit={handleSubmitReview} className="space-y-4">
-                <div className="flex justify-between items-center pb-2.5 border-b border-brand-peach/10">
-                  <h3 className="font-display font-medium text-brand-white text-md uppercase">Escribe tu opinión</h3>
-                  <button 
-                    type="button" 
-                    onClick={() => setShowForm(false)}
-                    className="text-xs text-brand-peach hover:text-brand-white uppercase"
-                  >
-                    Cancelar
-                  </button>
-                </div>
-
-                {successMsg ? (
-                  <div className="py-8 text-center flex flex-col items-center space-y-2">
-                    <div className="w-10 h-10 rounded-full bg-emerald-950 flex items-center justify-center border border-emerald-500/30 text-emerald-400">
-                      <Check className="w-5 h-5" />
-                    </div>
-                    <p className="text-xs font-bold text-brand-white uppercase">¡Tu reseña ha sido publicada!</p>
-                    <p className="text-[11px] text-brand-peach/60 font-sans">Se ha sincronizado localmente con Google Reviews.</p>
-                  </div>
-                ) : (
-                  <>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                      {/* Name input */}
-                      <div className="space-y-1">
-                        <label className="text-[10px] font-mono text-brand-peach/60 uppercase">Tu nombre / Empresa *</label>
-                        <input 
-                          id="review-input-name"
-                          type="text"
-                          required
-                          placeholder="Ej. Carmen García"
-                          value={authorName}
-                          onChange={(e) => setAuthorName(e.target.value)}
-                          className="w-full bg-brand-black/60 border border-brand-peach/15 focus:border-brand-coral text-brand-white text-xs rounded-xl p-3 outline-none"
-                        />
-                      </div>
-
-                      {/* Stars input bar */}
-                      <div className="space-y-1">
-                        <label className="text-[10px] font-mono text-brand-peach/60 uppercase">Tu valoración (Estrellas)</label>
-                        <div className="flex items-center space-x-1.5 h-10">
-                          {[1, 2, 3, 4, 5].map((starValue) => (
-                            <button
-                              id={`star-btn-${starValue}`}
-                              key={starValue}
-                              type="button"
-                              onClick={() => setRating(starValue)}
-                              className="text-xl transition-all hover:scale-115"
-                            >
-                              <Star 
-                                className={`w-6 h-6 ${
-                                  starValue <= rating 
-                                    ? "fill-amber-400 text-amber-400" 
-                                    : "text-brand-peach/30"
-                                }`} 
-                              />
-                            </button>
-                          ))}
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* Review text comment */}
-                    <div className="space-y-1">
-                      <label className="text-[10px] font-mono text-brand-peach/60 uppercase">Escribe tu comentario *</label>
-                      <textarea
-                        id="review-input-text"
-                        required
-                        rows={3}
-                        placeholder="Cuéntanos qué tal fue tu traslado con NANDO-GP en España..."
-                        value={text}
-                        onChange={(e) => setText(e.target.value)}
-                        className="w-full bg-brand-black/60 border border-brand-peach/15 focus:border-brand-coral text-brand-white text-xs rounded-xl p-3 outline-none resize-none"
-                      />
-                    </div>
-
-                    <button
-                      id="review-submit-confirm"
-                      type="submit"
-                      className="w-full py-3 bg-brand-terracotta hover:bg-brand-coral text-brand-white text-xs font-bold rounded-xl transition-all cursor-pointer"
-                    >
-                      Publicar Reseña en Vivo
-                    </button>
-                  </>
-                )}
-              </form>
-            </motion.div>
-          )}
-        </AnimatePresence>
-
         {/* Reviews List Layout with staggered scroll animations */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {reviews.map((review, rIndex) => {
+          {INITIAL_REVIEWS.map((review, rIndex) => {
             return (
               <motion.div
                 id={review.idAttribute}
@@ -290,7 +143,7 @@ export default function Reviews() {
                           {review.authorName}
                         </h4>
                         <span className="text-[9px] text-[#4285F4] font-mono tracking-wider flex items-center space-x-1 uppercase mt-0.5">
-                          {review.isLocal ? "Cliente Verificado" : "Google Review"}
+                          Google Review
                         </span>
                       </div>
                     </div>
@@ -319,7 +172,7 @@ export default function Reviews() {
 
                   {/* Comment */}
                   <p className="text-xs text-gray-700 mt-3.5 leading-relaxed font-sans line-clamp-4">
-                    "{review.text}"
+                    &quot;{review.text}&quot;
                   </p>
                 </div>
 
@@ -363,7 +216,6 @@ export default function Reviews() {
   );
 }
 
-// Quick LockBadge custom icon
 function LockBadge(props: React.SVGProps<SVGSVGElement>) {
   return (
     <svg
