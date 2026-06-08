@@ -8,9 +8,6 @@ export const GOOGLE_REVIEWS = {
   rating: 5,
   reviewCount: 5,
 
-  // Sustituir cuando tengas la ficha real:
-  // 1) viewReviewsUrl: enlace a la ficha/reseñas de Google Maps
-  // 2) writeReviewUrl: enlace oficial de "Conseguir más reseñas"
-  viewReviewsUrl: "#",
+  viewReviewsUrl: "https://g.page/r/CYt1ZazleFiGEBM/review",
   writeReviewUrl: "https://search.google.com/local/writereview?placeid=TU_PLACE_ID",
 } as const;
