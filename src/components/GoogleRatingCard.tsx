@@ -66,28 +66,26 @@ export default function GoogleRatingCard({
 
   const ariaLabel = `${businessName ?? "NANDO-GP"}: ${rating} de 5 estrellas, ${reviewCount} reseñas en Google`;
 
-  const handleClick = (e: MouseEvent<HTMLAnchorElement>) => {
-    if (isPlaceholder) {
-      e.preventDefault();
-    }
-  };
-
   const linkProps = isPlaceholder
     ? {}
     : { target: "_blank", rel: "noopener noreferrer" as const };
 
   return (
     <div
-      className={`inline-flex flex-col items-center ${preset.dimension} ${preset.padding} ${preset.maxWidth} ${preset.rounding} bg-white shadow-[0_4px_20px_-4px_rgba(0,0,0,0.08)] hover:shadow-[0_6px_24px_-4px_rgba(0,0,0,0.12)] transition-shadow ${className}`}
+      className={`relative inline-flex flex-col items-center ${preset.dimension} ${preset.padding} ${preset.maxWidth} ${preset.rounding} bg-white shadow-[0_4px_20px_-4px_rgba(0,0,0,0.08)] hover:shadow-[0_6px_24px_-4px_rgba(0,0,0,0.12)] transition-shadow ${className}`}
     >
       <a
         href={href}
         {...linkProps}
         title={isPlaceholder ? "Enlace de Google Reviews pendiente" : undefined}
         aria-label={ariaLabel}
-        onClick={handleClick}
-        className="flex flex-col items-center w-full"
-      >
+        onClick={(e: MouseEvent<HTMLAnchorElement>) => {
+          if (isPlaceholder) e.preventDefault();
+        }}
+        className="absolute inset-0 z-0"
+      />
+
+      <div className="relative z-10 pointer-events-none flex flex-col items-center w-full">
         <img
           src="/icons/google-icon.webp"
           alt="Google"
@@ -123,16 +121,16 @@ export default function GoogleRatingCard({
         <span className={`${preset.text} text-gray-700 font-bold text-center mt-0.5 leading-tight`}>
           {rating} | {reviewCount} reseñas
         </span>
-      </a>
+      </div>
 
       {showWriteReview && preset.writeLayout === "block" && (
         <>
-          <div className="w-full h-px bg-gray-100 my-2.5" />
+          <div className="relative z-10 w-full h-px bg-gray-100 my-2.5" />
           <a
             href={writeReviewHref}
             target="_blank"
             rel="noopener noreferrer"
-            className={`${preset.writeBtn} w-full inline-flex items-center justify-center space-x-1.5 rounded-lg bg-gray-50 hover:bg-gray-100 text-gray-700 font-bold transition-colors cursor-pointer`}
+            className={`relative z-10 ${preset.writeBtn} w-full inline-flex items-center justify-center space-x-1.5 rounded-lg bg-gray-50 hover:bg-gray-100 text-gray-700 font-bold transition-colors cursor-pointer`}
           >
             <PenTool className={`${preset.writeIcon} text-gray-700`} />
             <span>Redactar Reseña</span>
@@ -145,7 +143,7 @@ export default function GoogleRatingCard({
           href={writeReviewHref}
           target="_blank"
           rel="noopener noreferrer"
-          className={`${preset.writeBtn} inline-flex items-center space-x-1 text-[#4285F4] font-bold cursor-pointer hover:underline`}
+          className={`relative z-10 ${preset.writeBtn} inline-flex items-center space-x-1 text-[#4285F4] font-bold cursor-pointer hover:underline`}
         >
           <PenTool className={`${preset.writeIcon} text-[#4285F4]`} />
           <span>Redactar Reseña</span>
