@@ -25,7 +25,7 @@ export const LOCAL_BUSINESS_SCHEMA = {
   name: "NANDO-GP Mudanzas",
   url: BASE_URL,
   telephone: "+34605474930",
-  email: "eonandogp@gmail.com",
+  email: "nandogp.info@gmail.com",
   description:
     "Mudanzas baratas en Pamplona y Navarra. Presupuesto sin compromiso con precios competitivos. Mudanzas locales, nacionales, portes express, montaje de muebles y vaciado de locales en toda España. Servicio asegurado con cobertura nacional.",
   address: {

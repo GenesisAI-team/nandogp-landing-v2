@@ -67,8 +67,8 @@ export default function ContactForm() {
                 </div>
                 <div>
                   <p className="text-[10px] text-brand-peach/50 font-mono uppercase">Correo electrónico corporativo</p>
-                  <a href="mailto:transportesymundanzasnandogp@gmail.com" className="block max-w-full text-xs sm:text-sm font-bold text-brand-white hover:text-brand-sand transition-all leading-tight [overflow-wrap:anywhere]">
-                    transportesymundanzasnandogp@gmail.com
+                  <a href="mailto:nandogp.info@gmail.com" className="block max-w-full text-xs sm:text-sm font-bold text-brand-white hover:text-brand-sand transition-all leading-tight [overflow-wrap:anywhere]">
+                    nandogp.info@gmail.com
                   </a>
                 </div>
               </div>
