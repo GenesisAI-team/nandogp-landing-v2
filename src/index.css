@@ -68,23 +68,30 @@ body {
 }
 
 /* Global Background Image - Puerta furgoneta sepia/cobre */
+/* Stable 100lvh height: immune to mobile browser chrome show/hide, so the cover image never re-scales while scrolling */
 body::before {
   content: "";
   position: fixed;
-  inset: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100lvh;
   z-index: -2;
   background-image: url("/Nando-bg.webp");
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
-  background-attachment: fixed;
 }
 
 /* Subtle dark overlay on top of the image to give cards more contrast */
+/* Same stable 100lvh box so the gradients never re-stretch on mobile scroll */
 body::after {
   content: "";
   position: fixed;
-  inset: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100lvh;
   z-index: -1;
   pointer-events: none;
   background:
