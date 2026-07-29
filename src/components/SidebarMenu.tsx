@@ -18,7 +18,7 @@ export default function SidebarMenu() {
       */}
       <div 
         id="side-menu-container"
-        className="fixed right-0 top-0 bottom-0 z-40 flex items-center justify-end select-none pointer-events-none opacity-80"
+        className="fixed right-0 top-0 h-lvh z-40 flex items-center justify-end select-none pointer-events-none opacity-80"
       >
         <div className="h-full flex items-center">
           {/* Vertical banner block */}
@@ -26,7 +26,7 @@ export default function SidebarMenu() {
             initial={{ x: 100, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
             transition={{ duration: 0.8, type: "spring", stiffness: 100 }}
-            className="pointer-events-auto shadow-2xl h-[50vh] sm:h-[60vh] w-8 sm:w-15 md:w-24 flex flex-col justify-between items-center py-8 rounded-l-3xl bg-brand-dark/5 border-l border-y border-brand-peach/20 glass-panel"
+            className="pointer-events-auto shadow-2xl h-[50lvh] sm:h-[60lvh] w-8 sm:w-15 md:w-24 flex flex-col justify-between items-center py-8 rounded-l-3xl bg-brand-dark/5 border-l border-y border-brand-peach/20 glass-panel"
           >
          
 
@@ -49,7 +49,7 @@ export default function SidebarMenu() {
       */}
       <div
         id="vertical-branding-decor"
-        className="fixed right-0 top-0 h-full w-8 sm:w-15 md:w-24 z-50 pointer-events-none flex items-center justify-center bg-gradient-to-l from-brand-800/80 to-transparent"
+        className="fixed right-0 top-0 h-lvh w-8 sm:w-15 md:w-24 z-50 pointer-events-none flex items-center justify-center bg-gradient-to-l from-brand-800/80 to-transparent"
       >
         <span
           style={{ writingMode: "vertical-rl" }}
