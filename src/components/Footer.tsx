@@ -57,7 +57,7 @@ export default function Footer() {
               Para reservas extraordinarias, incidencias o reclamaciones directas:
             </p>
             <div className="font-mono text-xs space-y-1 text-brand-sand">
-              <p>📞 Tel: <strong className="text-brand-white">+34 653 89 63 52</strong></p>
+              <p>📞 Tel: <strong className="text-brand-white">+34 605 47 49 30</strong></p>
               <p>📞 Whatsapp: <strong className="text-brand-white">{PHONE_NUMBER}</strong></p>
               <p>✉ Soporte: <strong className="text-brand-white">transportesymudanzasnandogp
                 @gmail.com</strong></p>
