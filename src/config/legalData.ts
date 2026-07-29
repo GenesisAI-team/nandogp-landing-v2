@@ -16,7 +16,7 @@ export const LEGAL_CONTENT: Record<string, LegalSection> = {
           { label: "NIF:", value: "73419940F" },
           { label: "Domicilio:", value: "C/ Mayor 15, 1.5, 31600 Burlada (Navarra), España" },
           { label: "Teléfono:", value: "+34 605 474 930" },
-          { label: "Email:", value: "eonandogp@gmail.com" },
+          { label: "Email:", value: "nandogp.info@gmail.com" },
         ],
       },
       {
@@ -106,7 +106,7 @@ export const LEGAL_CONTENT: Record<string, LegalSection> = {
           { label: "Responsable:", value: "Efrén Orlando Guaman Peñarreta" },
           { label: "NIF:", value: "73419940F" },
           { label: "Dirección:", value: "C/ Mayor 15, 1.5, 31600 Burlada (Navarra), España" },
-          { label: "Email:", value: "eonandogp@gmail.com" },
+          { label: "Email:", value: "nandogp.info@gmail.com" },
           { label: "Teléfono:", value: "+34 605 474 930" },
         ],
       },
@@ -252,7 +252,7 @@ export const LEGAL_CONTENT: Record<string, LegalSection> = {
         type: "paragraph",
         segments: [
           { text: "Para ejercerlos, envíe un email a: " },
-          { text: "eonandogp@gmail.com", bold: true },
+          { text: "nandogp.info@gmail.com", bold: true },
           { text: ", indicando el derecho y aportando información que permita identificar la solicitud." },
         ],
       },
@@ -288,7 +288,7 @@ export const LEGAL_CONTENT: Record<string, LegalSection> = {
           { label: "Prestador:", value: "Efrén Orlando Guaman Peñarreta (autónomo)" },
           { label: "NIF:", value: "73419940F" },
           { label: "Dirección:", value: "C/ Mayor 15, 1.5, 31600 Burlada (Navarra), España" },
-          { label: "Contacto:", value: "+34 605 474 930 · eonandogp@gmail.com" },
+          { label: "Contacto:", value: "+34 605 474 930 · nandogp.info@gmail.com" },
         ],
       },
       {
@@ -452,7 +452,7 @@ export const LEGAL_CONTENT: Record<string, LegalSection> = {
       {
         type: "paragraph",
         segments: [
-          { text: "El cliente puede presentar reclamación por Email (eonandogp@gmail.com) o correo postal a la dirección del prestador. Se responderá en un plazo razonable." },
+          { text: "El cliente puede presentar reclamación por Email (nandogp.info@gmail.com) o correo postal a la dirección del prestador. Se responderá en un plazo razonable." },
         ],
       },
       {
