@@ -19,7 +19,7 @@ Operamos en toda España peninsular, con base logística en **Burlada (Navarra)*
 ### Contacto
 
 - Web: [transportesnandogp.com](https://www.transportesnandogp.com)
-- Teléfono: 653 89 63 52
+- Teléfono: 605 47 49 30
 - WhatsApp: 605 47 49 30
 - Email: transportesymudanzasnandogp@gmail.com
 

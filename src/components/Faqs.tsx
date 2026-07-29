@@ -169,11 +169,11 @@ export default function Faqs() {
 
             <div className="flex flex-col sm:flex-row sm:gap-4 gap-2">
               <a
-                href="tel:+34653896352"
+                href="tel:+34605474930"
                 className="flex items-center justify-center gap-3 px-8 py-4 bg-gradient-to-r from-brand-terracotta to-brand-coral hover:from-brand-coral hover:to-brand-terracotta text-brand-white font-bold rounded-xl shadow-xl transition-all hover:scale-103 cursor-pointer group"
               >
                 <Phone className="w-5 h-5 shrink-0" />
-                <span>653 89 63 52</span>
+                <span>605 47 49 30</span>
                 <ArrowRight className="w-4 h-4 shrink-0 transition-transform group-hover:translate-x-1" />
               </a>
 

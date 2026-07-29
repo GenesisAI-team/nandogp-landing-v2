@@ -39,7 +39,7 @@ export default function Header({ phone }: HeaderProps) {
     window.open(`https://wa.me/${num}?text=${text}`, "_blank");
   };
 
-  const phoneTel = `tel:653 89 63 52`;
+  const phoneTel = `tel:605 47 49 30`;
 
   return (
     <>
@@ -63,7 +63,7 @@ export default function Header({ phone }: HeaderProps) {
             className="md:hidden flex-1 flex items-center justify-center mx-3 px-3 h-10 rounded-lg bg-brand-brown/60 border border-brand-peach/20 text-brand-sand hover:text-brand-white transition-all whitespace-nowrap"
           >
             <Phone className="w-5.5 h-5.5 text-brand-coral shrink-0 mr-1.5" />
-            <span className="font-mono text-[1rem] font-semibold">653 89 63 52</span>
+            <span className="font-mono text-[1rem] font-semibold">605 47 49 30</span>
           </a>
 
           {/* Desktop nav */}
@@ -86,7 +86,7 @@ export default function Header({ phone }: HeaderProps) {
             className="hidden md:flex items-center space-x-1 md:space-x-2 lg:space-x-3 px-2 md:px-3 lg:px-5 py-2 lg:py-3 rounded-xl bg-brand-brown/50 border border-brand-peach/25 font-bold text-brand-sand hover:text-brand-white transition-all hover:scale-103 text-[0.65rem] md:text-xs lg:text-[2rem]"
           >
             <Phone className="text-brand-coral shrink-0 w-3 h-3 md:w-3.5 md:h-3.5 lg:w-7 lg:h-7" />
-            <span className="font-mono">653 89 63 52</span>
+            <span className="font-mono">605 47 49 30</span>
           </a>
 
           {/* Mobile hamburger */}

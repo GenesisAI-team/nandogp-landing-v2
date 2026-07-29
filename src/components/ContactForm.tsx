@@ -55,8 +55,8 @@ export default function ContactForm() {
                 </div>
                 <div>
                   <p className="text-[10px] text-brand-peach/50 font-mono uppercase">Llamadas e Info Directa</p>
-                  <a href="tel:+34605911930" className="text-sm font-mono font-bold text-brand-white hover:text-brand-sand transition-all">
-                    +34 653 89 63 52
+                  <a href="tel:+34605474930" className="text-sm font-mono font-bold text-brand-white hover:text-brand-sand transition-all">
+                    +34 605 47 49 30
                   </a>
                 </div>
               </div>
