@@ -3,9 +3,10 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Phone, Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
+import useBodyScrollLock from "../hooks/useBodyScrollLock";
 
 interface HeaderProps {
   phone: string;
@@ -21,6 +22,18 @@ const NAV_ITEMS = [
 
 export default function Header({ phone }: HeaderProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  useBodyScrollLock(mobileMenuOpen);
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(min-width: 768px)");
+    const handleMediaChange = (event: MediaQueryListEvent) => {
+      if (event.matches) setMobileMenuOpen(false);
+    };
+
+    mediaQuery.addEventListener("change", handleMediaChange);
+    return () => mediaQuery.removeEventListener("change", handleMediaChange);
+  }, []);
 
   const handleNavClick = (href: string) => {
     setMobileMenuOpen(false);
@@ -109,7 +122,7 @@ export default function Header({ phone }: HeaderProps) {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.15 }}
-            className="fixed inset-0 z-50 md:hidden"
+            className="mobile-menu-overlay fixed inset-0 z-50 md:hidden"
           >
             {/* Backdrop */}
             <div
@@ -123,10 +136,10 @@ export default function Header({ phone }: HeaderProps) {
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
               transition={{ type: "spring", stiffness: 600, damping: 60 }}
-              className="absolute right-0 top-0 bottom-0 w-[85%] max-w-sm bg-brand-dark/98 backdrop-blur-xl border-l border-brand-peach/15 flex flex-col"
+              className="absolute right-0 top-0 bottom-0 w-[85%] max-w-sm min-h-0 max-h-[100dvh] overflow-hidden bg-brand-dark/98 backdrop-blur-xl border-l border-brand-peach/15 flex flex-col"
             >
               {/* Close button */}
-              <div className="flex items-center justify-between px-6 py-5 border-b border-brand-peach/10">
+              <div className="shrink-0 flex items-center justify-between px-6 py-5 border-b border-brand-peach/10">
                 <span className="font-display font-black text-lg uppercase tracking-tighter text-brand-white">
                   NANDO<span className="text-brand-coral font-sans font-extralight tracking-widest ml-1">-GP</span>
                 </span>
@@ -140,7 +153,7 @@ export default function Header({ phone }: HeaderProps) {
               </div>
 
               {/* Action buttons */}
-              <div className="pb-8  flex flex-col ">
+              <div className="shrink-0 pb-8 flex flex-col">
                 <a
                   href={phoneTel}
                   className="flex items-center justify-center gap-3 px-5 py-3.5 bg-gradient-to-r from-brand-terracotta to-brand-coral text-brand-white font-bold transition-all hover:scale-103"
@@ -158,7 +171,7 @@ export default function Header({ phone }: HeaderProps) {
               </div>
 
               {/* Nav links */}
-              <nav className="flex flex-col">
+              <nav className="min-h-0 flex-1 overflow-y-auto overscroll-contain flex flex-col pb-[env(safe-area-inset-bottom)]">
                 {NAV_ITEMS.map((item, i) => (
                   <motion.a
                     key={item.href}
@@ -167,7 +180,7 @@ export default function Header({ phone }: HeaderProps) {
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: 0.05 + i * 0.06, duration: 0.3 }}
                     onClick={() => handleNavClick(item.href)}
-                    className="px-6 py-4 text-lg font-display uppercase tracking-wider text-brand-sand hover:text-brand-white hover:bg-brand-brown/40 border-b border-brand-peach/5"
+                    className="shrink-0 px-6 py-4 text-lg font-display uppercase tracking-wider text-brand-sand hover:text-brand-white hover:bg-brand-brown/40 border-b border-brand-peach/5"
                   >
                     {item.label}
                   </motion.a>
