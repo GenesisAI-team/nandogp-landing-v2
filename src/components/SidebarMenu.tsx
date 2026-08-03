@@ -49,11 +49,11 @@ export default function SidebarMenu() {
       */}
       <div
         id="vertical-branding-decor"
-        className="fixed right-0 top-0 h-lvh w-8 sm:w-15 md:w-24 z-50 pointer-events-none flex items-center justify-center bg-gradient-to-l from-brand-800/80 to-transparent"
+        className="fixed right-0 top-0 h-lvh w-8 sm:w-15 md:w-24 z-50 pointer-events-none flex items-center justify-center overflow-hidden bg-gradient-to-l from-brand-800/80 to-transparent"
       >
         <span
           style={{ writingMode: "vertical-rl" }}
-          className="rotate-180 text-4xl sm:text-5xl md:text-6xl font-black uppercase tracking-widest bg-gradient-to-b from-brand-400 via-brand-500 to-brand-600 bg-clip-text opacity-100 text-transparent"
+          className="rotate-180 text-4xl sm:text-5xl md:text-6xl leading-none whitespace-nowrap font-black uppercase tracking-widest bg-gradient-to-b from-brand-400 via-brand-500 to-brand-600 bg-clip-text opacity-100 text-transparent"
         >
           NANDO-GP
         </span>

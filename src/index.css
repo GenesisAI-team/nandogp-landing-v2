@@ -148,6 +148,18 @@ body::after {
   text-shadow: 0 1px 8px rgba(10, 6, 4, 0.7);
 }
 
+/* Hide the side branding on short touch landscape viewports to keep contact actions clear. */
+@media (orientation: landscape)
+  and (max-width: 1023px)
+  and (max-height: 600px)
+  and (pointer: coarse)
+  and (hover: none) {
+  #side-menu-container,
+  #vertical-branding-decor {
+    display: none;
+  }
+}
+
 /* Floating van image - drop shadow respects PNG alpha */
 .hero-van-floating img {
   filter: drop-shadow(0 8px 24px rgba(168, 107, 60, 0.4)) drop-shadow(0 2px 8px rgba(0, 0, 0, 0.45));
