@@ -3,9 +3,10 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect, useCallback } from "react";
 import { motion, AnimatePresence, useInView } from "motion/react";
 import { ArrowRight, Phone, ShieldCheck } from "lucide-react";
+import { preloadImage } from "../lib/preloadImages";
 
 interface StackPhoto {
   id: number;
@@ -56,16 +57,60 @@ const PHOTOS_STACK: StackPhoto[] = [
 export default function Hero() {
   const [activeIndex, setActiveIndex] = useState(0);
   const [direction, setDirection] = useState(1);
+  const [readySources, setReadySources] = useState<Set<string>>(() => new Set());
 
   const vanRef = useRef<HTMLDivElement>(null);
   const vanInView = useInView(vanRef, { once: true, amount: 0.15 });
+  const requestedIndexRef = useRef(0);
+
+  const markSourceReady = useCallback((src: string) => {
+    setReadySources((prev) => {
+      if (prev.has(src)) return prev;
+      const next = new Set(prev);
+      next.add(src);
+      return next;
+    });
+  }, []);
+
+  useEffect(() => {
+    let cancelled = false;
+
+    PHOTOS_STACK.forEach((photo) => {
+      preloadImage(photo.url).then(() => {
+        if (cancelled) return;
+        markSourceReady(photo.url);
+      });
+    });
+
+    return () => {
+      cancelled = true;
+    };
+  }, [markSourceReady]);
+
+  const requestPhoto = (targetIndex: number, requestedDirection?: number) => {
+    const total = PHOTOS_STACK.length;
+    const nextIndex = ((targetIndex % total) + total) % total;
+    const previousIndex = requestedIndexRef.current;
+
+    if (nextIndex === previousIndex) return;
+
+    requestedIndexRef.current = nextIndex;
+    const nextDirection = requestedDirection ?? (nextIndex > previousIndex ? 1 : -1);
+
+    preloadImage(PHOTOS_STACK[nextIndex].url).then(() => {
+      markSourceReady(PHOTOS_STACK[nextIndex].url);
+      if (requestedIndexRef.current !== nextIndex) return;
+      setDirection(nextDirection);
+      setActiveIndex(nextIndex);
+    });
+  };
 
   const handleNext = () => {
-    setDirection(1);
-    setActiveIndex((prev) => (prev + 1) % PHOTOS_STACK.length);
+    requestPhoto(requestedIndexRef.current + 1);
   };
 
   const activePhoto = PHOTOS_STACK[activeIndex];
+  const activePhotoReady = readySources.has(activePhoto.url);
 
   const handleWhatsApp = () => {
     const text = encodeURIComponent("¡Hola NANDO-GP! Acabo de ver vuestra web y me gustaría preguntar por vuestras tarifas de mudanzas.");
@@ -226,30 +271,34 @@ export default function Hero() {
                 style={{ height: '340px' }}
               >
                 <AnimatePresence mode="wait" custom={direction}>
-                  <motion.div
-                    key={`van-${activePhoto.id}`}
-                    custom={direction}
-                    initial={vanInView
-                      ? { opacity: 0, x: direction * 100, scale: 0.92 }
-                      : { opacity: 0, x: 300, scale: 0.92 }}
-                    animate={vanInView
-                      ? { opacity: 1, x: 0, scale: 1 }
-                      : { opacity: 0, x: 300, scale: 0.92 }}
-                    exit={{ opacity: 0, x: direction * -100, scale: 0.92 }}
-                    transition={vanInView
-                      ? { type: "spring", stiffness: 180, damping: 24 }
-                      : { type: "spring", stiffness: 55, damping: 6, mass: 3.5 }}
-                    className="hero-van-floating cursor-pointer"
-                    style={{ height: '340px' }}
-                    onClick={handleNext}
-                  >
-                  <img
-                    src={activePhoto.url}
-                    alt={activePhoto.title}
-                    className="w-full h-full object-contain select-none scale-110 sm:scale-[1.15]"
-                  />
-                </motion.div>
-              </AnimatePresence>
+                  {activePhotoReady && (
+                    <motion.div
+                      key={`van-${activePhoto.id}`}
+                      custom={direction}
+                      initial={vanInView
+                        ? { opacity: 0, x: direction * 100, scale: 0.92 }
+                        : { opacity: 0, x: 300, scale: 0.92 }}
+                      animate={vanInView
+                        ? { opacity: 1, x: 0, scale: 1 }
+                        : { opacity: 0, x: 300, scale: 0.92 }}
+                      exit={{ opacity: 0, x: direction * -100, scale: 0.92 }}
+                      transition={vanInView
+                        ? { type: "spring", stiffness: 180, damping: 24 }
+                        : { type: "spring", stiffness: 55, damping: 6, mass: 3.5 }}
+                      className="hero-van-floating cursor-pointer"
+                      style={{ height: '340px' }}
+                      onClick={handleNext}
+                    >
+                      <img
+                        src={activePhoto.url}
+                        alt={activePhoto.title}
+                        decoding="async"
+                        loading="eager"
+                        className="w-full h-full object-contain select-none scale-110 sm:scale-[1.15]"
+                      />
+                    </motion.div>
+                  )}
+                </AnimatePresence>
               </div>
             </div>
 
@@ -258,7 +307,7 @@ export default function Hero() {
               {PHOTOS_STACK.map((photo, i) => (
                 <button
                   key={photo.id}
-                  onClick={() => { setDirection(i >= activeIndex ? 1 : -1); setActiveIndex(i); }}
+                  onClick={() => requestPhoto(i, i >= activeIndex ? 1 : -1)}
                   className={`rounded-full transition-all duration-300 cursor-pointer ${
                     i === activeIndex
                       ? 'w-3 h-3 bg-brand-terracotta ring-2 ring-brand-terracotta/40 ring-offset-2 ring-offset-brand-black'
