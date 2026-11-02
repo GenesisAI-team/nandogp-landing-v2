@@ -3,10 +3,11 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import React, { useState } from "react";
+import React, { useState, useEffect, useCallback, useRef } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { Truck, Wrench, Trash2, Package, Zap, CheckCircle2, ChevronDown, ShieldCheck } from "lucide-react";
 import { SERVICES_DATA } from "../data";
+import { preloadImage } from "../lib/preloadImages";
 
 
 
@@ -22,6 +23,50 @@ const IconComponents: { [key: string]: React.ComponentType<{ className?: string 
 export default function Services() {
   const [activeTab, setActiveTab] = useState<string>(SERVICES_DATA[0].id);
   const [expandedCard, setExpandedCard] = useState<string | null>(null);
+  const [readySources, setReadySources] = useState<Set<string>>(() => new Set());
+  const requestedServiceRef = useRef<string>(SERVICES_DATA[0].id);
+
+  const markSourceReady = useCallback((src: string) => {
+    setReadySources((prev) => {
+      if (prev.has(src)) return prev;
+      const next = new Set(prev);
+      next.add(src);
+      return next;
+    });
+  }, []);
+
+  useEffect(() => {
+    let cancelled = false;
+
+    SERVICES_DATA.forEach((service) => {
+      preloadImage(service.bgImage).then(() => {
+        if (cancelled) return;
+        markSourceReady(service.bgImage);
+      });
+    });
+
+    return () => {
+      cancelled = true;
+    };
+  }, [markSourceReady]);
+
+  const requestService = (serviceId: string) => {
+    if (serviceId === requestedServiceRef.current) return;
+
+    const service = SERVICES_DATA.find((item) => item.id === serviceId);
+    if (!service) return;
+
+    requestedServiceRef.current = serviceId;
+
+    preloadImage(service.bgImage).then(() => {
+      markSourceReady(service.bgImage);
+      if (requestedServiceRef.current !== serviceId) return;
+      setActiveTab(serviceId);
+    });
+  };
+
+  const activeService = SERVICES_DATA.find((service) => service.id === activeTab);
+  const activeImageReady = activeService ? readySources.has(activeService.bgImage) : false;
 
   return (
     <section 
@@ -72,7 +117,7 @@ export default function Services() {
               <button
                 id={`service-tab-btn-${service.id}`}
                 key={service.id}
-                onClick={() => setActiveTab(service.id)}
+                onClick={() => requestService(service.id)}
                 className={`flex-1 flex items-center justify-center space-x-2.5 py-3.5 px-4 rounded-xl text-xs font-semibold uppercase tracking-wider transition-all duration-300 cursor-pointer ${
                   isSelected 
                     ? "bg-gradient-to-r from-brand-terracotta to-brand-coral text-brand-white shadow-lg" 
@@ -87,9 +132,9 @@ export default function Services() {
         </div>
 
         {/* Dynamic Display selected item (Desktop version) */}
-        <div className="hidden md:block max-w-5xl mx-auto">
+        <div className="hidden md:block max-w-5xl mx-auto min-h-[320px]">
           <AnimatePresence mode="wait">
-            {SERVICES_DATA.filter(s => s.id === activeTab).map((service) => {
+            {activeImageReady && SERVICES_DATA.filter(s => s.id === activeTab).map((service) => {
               const Icon = IconComponents[service.iconName] || Truck;
               return (
                 <motion.div
@@ -139,6 +184,8 @@ export default function Services() {
                       src={service.bgImage} 
                       alt={service.title}
                       referrerPolicy="no-referrer"
+                      decoding="async"
+                      loading="eager"
                       className="absolute inset-0 w-full h-full object-cover transition-transform duration-[1000ms] group-hover:scale-105 saturate-75 contrast-105"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-brand-black/90 via-brand-black/20 to-transparent" />
@@ -216,6 +263,8 @@ export default function Services() {
                             src={service.bgImage} 
                             alt={service.title}
                             referrerPolicy="no-referrer"
+                            decoding="async"
+                            loading="lazy"
                             className="w-full h-full object-cover saturate-75"
                           />
                           <div className="absolute inset-0 bg-gradient-to-t from-brand-black via-transparent to-transparent" />
