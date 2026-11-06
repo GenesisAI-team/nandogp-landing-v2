@@ -23,6 +23,7 @@ const IconComponents: { [key: string]: React.ComponentType<{ className?: string 
 export default function Services() {
   const [activeTab, setActiveTab] = useState<string>(SERVICES_DATA[0].id);
   const [expandedCard, setExpandedCard] = useState<string | null>(null);
+  const [closingInstantly, setClosingInstantly] = useState<string | null>(null);
   const [readySources, setReadySources] = useState<Set<string>>(() => new Set());
   const requestedServiceRef = useRef<string>(SERVICES_DATA[0].id);
 
@@ -221,7 +222,13 @@ export default function Services() {
                 {/* Header summary button clickable */}
                 <button
                   id={`mobile-service-expand-${service.id}`}
-                  onClick={() => setExpandedCard(isExpanded ? null : service.id)}
+                  onClick={() => {
+                    const next = isExpanded ? null : service.id;
+                    setClosingInstantly(next !== null ? expandedCard : null);
+                    setExpandedCard(next);
+                  }}
+                  aria-expanded={isExpanded}
+                  aria-controls={`mobile-service-panel-${service.id}`}
                   className="w-full p-5 flex items-center justify-between text-left cursor-pointer transition-colors active:bg-brand-brown/10"
                 >
                   <div className="flex items-center space-x-3.5">
@@ -247,12 +254,20 @@ export default function Services() {
                 </button>
 
                 {/* Animated content expansion */}
-                <AnimatePresence initial={false}>
+                <AnimatePresence initial={false} custom={closingInstantly}>
                   {isExpanded && (
                     <motion.div
+                      id={`mobile-service-panel-${service.id}`}
                       initial={{ height: 0, opacity: 0 }}
                       animate={{ height: "auto", opacity: 1 }}
-                      exit={{ height: 0, opacity: 0 }}
+                      exit="panelExit"
+                      variants={{
+                        panelExit: (instantId: string | null) => ({
+                          height: 0,
+                          opacity: 0,
+                          transition: { duration: instantId === service.id ? 0 : 0.3 },
+                        }),
+                      }}
                       transition={{ duration: 0.3 }}
                       className="border-t border-brand-peach/10 bg-brand-black/30"
                     >
