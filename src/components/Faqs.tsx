@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { HelpCircle, ChevronDown, ArrowRight, Phone } from "lucide-react";
 import { FAQ_DATA } from "../data";
@@ -11,13 +11,7 @@ import { FAQ_DATA } from "../data";
 export default function Faqs() {
   const [activeCategory, setActiveCategory] = useState<"todos" | "precios" | "seguridad" | "proceso">("todos");
   const [openFaqId, setOpenFaqId] = useState<string | null>(null);
-
-  useEffect(() => {
-    const raf = requestAnimationFrame(() => {
-      setOpenFaqId("faq1");
-    });
-    return () => cancelAnimationFrame(raf);
-  }, []);
+  const [closingInstantly, setClosingInstantly] = useState<string | null>(null);
 
   const handleWhatsApp = () => {
     const text = encodeURIComponent("¡Hola NANDO-GP! Me gustaría resolver una duda sobre vuestros servicios de mudanza.");
@@ -77,6 +71,7 @@ export default function Faqs() {
               key={cat.id}
               onClick={() => {
                 setActiveCategory(cat.id as typeof activeCategory);
+                setClosingInstantly(null);
                 setOpenFaqId(null); // Close active one to let them explore cleanly
               }}
               className={`py-2 px-4 rounded-xl text-xs font-semibold tracking-wider transition-all duration-300 cursor-pointer ${
@@ -111,7 +106,13 @@ export default function Faqs() {
                 >
                   <button
                     id={`faq-accordion-toggle-${faq.id}`}
-                    onClick={() => setOpenFaqId(isOpen ? null : faq.id)}
+                    onClick={() => {
+                      const next = isOpen ? null : faq.id;
+                      setClosingInstantly(next !== null ? openFaqId : null);
+                      setOpenFaqId(next);
+                    }}
+                    aria-expanded={isOpen}
+                    aria-controls={`faq-panel-${faq.id}`}
                     className="w-full p-5 sm:p-6 flex items-center justify-between text-left cursor-pointer active:bg-brand-brown/20"
                   >
                     <div className="flex items-center space-x-3.5 pr-4">
@@ -129,12 +130,20 @@ export default function Faqs() {
                     </motion.div>
                   </button>
 
-                  <AnimatePresence initial={false}>
+                  <AnimatePresence initial={false} custom={closingInstantly}>
                     {isOpen && (
                       <motion.div
+                        id={`faq-panel-${faq.id}`}
                         initial={{ height: 0, opacity: 0 }}
                         animate={{ height: "auto", opacity: 1 }}
-                        exit={{ height: 0, opacity: 0 }}
+                        exit="panelExit"
+                        variants={{
+                          panelExit: (instantId: string | null) => ({
+                            height: 0,
+                            opacity: 0,
+                            transition: { duration: instantId === faq.id ? 0 : 0.3 },
+                          }),
+                        }}
                         transition={{ duration: 0.3 }}
                         className="bg-brand-black/35 border-t border-brand-peach/10"
                       >
