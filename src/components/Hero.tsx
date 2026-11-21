@@ -174,24 +174,24 @@ export default function Hero() {
                 <span className="font-normal text-brand-peach">Cobertura nacional en toda España</span>
               </p>
 
-              <div className="flex flex-col gap-2 sm:flex-row sm:items-start sm:gap-4">
-                <a
-                  href="tel:+34605474930"
-                  aria-label="Llamar por teléfono a NANDO-GP: 605 47 49 30"
-                  className="flex items-center justify-center gap-3 px-8 py-4 bg-gradient-to-r from-brand-terracotta to-brand-coral hover:from-brand-coral hover:to-brand-terracotta text-brand-white font-bold rounded-xl shadow-xl transition-all hover:scale-103 cursor-pointer group focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-brand-sand/70 focus-visible:ring-offset-2 focus-visible:ring-offset-brand-black"
-                >
-                  <Phone className="w-5 h-5 shrink-0" />
-                  <span>605 47 49 30</span>
-                  <ArrowRight className="w-4 h-4 shrink-0 transition-transform group-hover:translate-x-1" />
-                </a>
+              <div className="flex flex-col gap-2">
+                <div className="flex flex-wrap gap-2 sm:gap-4">
+                  <a
+                    href="tel:+34605474930"
+                    aria-label="Llamar por teléfono a NANDO-GP: 605 47 49 30"
+                    className="flex flex-auto items-center justify-center gap-3 whitespace-nowrap px-8 py-4 bg-gradient-to-r from-brand-terracotta to-brand-coral hover:from-brand-coral hover:to-brand-terracotta text-brand-white font-bold rounded-xl shadow-xl transition-all hover:scale-103 cursor-pointer group focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-brand-sand/70 focus-visible:ring-offset-2 focus-visible:ring-offset-brand-black"
+                  >
+                    <Phone className="w-5 h-5 shrink-0" />
+                    <span className="whitespace-nowrap">605 47 49 30</span>
+                    <ArrowRight className="w-4 h-4 shrink-0 transition-transform group-hover:translate-x-1" />
+                  </a>
 
-                <div className="flex flex-col gap-2">
                   <button
                     id="hero-whatsapp-btn"
                     type="button"
                     onClick={handleWhatsApp}
                     aria-describedby="hero-whatsapp-hint"
-                    className="flex items-center justify-center gap-2 px-8 py-4 bg-[#25D366] hover:bg-[#1ebe5a] text-white font-bold rounded-xl transition-all cursor-pointer hover:scale-103 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-brand-sand/70 focus-visible:ring-offset-2 focus-visible:ring-offset-brand-black"
+                    className="flex flex-auto items-center justify-center gap-2 px-8 py-4 bg-[#25D366] hover:bg-[#1ebe5a] text-white font-bold rounded-xl transition-all cursor-pointer hover:scale-103 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-brand-sand/70 focus-visible:ring-offset-2 focus-visible:ring-offset-brand-black sm:whitespace-nowrap"
                   >
                     <img
                       src="/Whatsapp-button.webp"
@@ -201,13 +201,14 @@ export default function Hero() {
                     />
                     <span>Contactar por WhatsApp</span>
                   </button>
-                  <p
-                    id="hero-whatsapp-hint"
-                    className="text-sm font-medium leading-snug text-brand-sand sm:max-w-[20rem]"
-                  >
-                    Envíanos origen, destino, fecha y fotos de los muebles por WhatsApp
-                  </p>
                 </div>
+
+                <p
+                  id="hero-whatsapp-hint"
+                  className="text-sm font-medium leading-snug text-brand-sand"
+                >
+                  Envíanos origen, destino, fecha y fotos de los muebles por WhatsApp
+                </p>
               </div>
 
               <motion.p
