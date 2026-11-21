@@ -5,7 +5,7 @@
 
 import { useState, useRef, useEffect, useCallback } from "react";
 import { motion, AnimatePresence, useInView } from "motion/react";
-import { ArrowRight, Phone, ShieldCheck } from "lucide-react";
+import { ArrowRight, MapPin, Phone, ShieldCheck } from "lucide-react";
 import { preloadImage } from "../lib/preloadImages";
 
 interface StackPhoto {
@@ -162,24 +162,53 @@ export default function Hero() {
               transition={{ duration: 0.8, delay: 0.3 }}
               className="flex flex-col gap-4"
             >
-              <div className="flex flex-col sm:flex-row sm:gap-4 gap-2">
-                <a
-                  href="tel:+34605474930"
-                  className="flex items-center justify-center gap-3 px-8 py-4 bg-gradient-to-r from-brand-terracotta to-brand-coral hover:from-brand-coral hover:to-brand-terracotta text-brand-white font-bold rounded-xl shadow-xl transition-all hover:scale-103 cursor-pointer group"
-                >
-                  <Phone className="w-5 h-5 shrink-0" />
-                  <span>605 47 49 30</span>
-                  <ArrowRight className="w-4 h-4 shrink-0 transition-transform group-hover:translate-x-1" />
-                </a>
+              <p
+                data-testid="hero-service-area"
+                className="flex flex-wrap items-center gap-x-2 gap-y-1 text-sm font-semibold text-brand-sand sm:text-base"
+              >
+                <MapPin className="h-4 w-4 shrink-0 text-brand-coral" aria-hidden="true" />
+                <span>Mudanzas en Pamplona y comarca</span>
+                <span className="font-normal text-brand-peach" aria-hidden="true">
+                  ·
+                </span>
+                <span className="font-normal text-brand-peach">Cobertura nacional en toda España</span>
+              </p>
 
-                <button
-                  id="hero-whatsapp-btn"
-                  onClick={handleWhatsApp}
-                  className="flex items-center justify-center gap-2 px-8 py-4 bg-[#25D366] hover:bg-[#1ebe5a] text-white font-bold rounded-xl transition-all cursor-pointer hover:scale-103"
+              <div className="flex flex-col gap-2">
+                <div className="flex flex-wrap gap-2 sm:gap-4">
+                  <a
+                    href="tel:+34605474930"
+                    aria-label="Llamar por teléfono a NANDO-GP: 605 47 49 30"
+                    className="flex flex-auto items-center justify-center gap-3 whitespace-nowrap px-8 py-4 bg-gradient-to-r from-brand-terracotta to-brand-coral hover:from-brand-coral hover:to-brand-terracotta text-brand-white font-bold rounded-xl shadow-xl transition-all hover:scale-103 cursor-pointer group focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-brand-sand/70 focus-visible:ring-offset-2 focus-visible:ring-offset-brand-black"
+                  >
+                    <Phone className="w-5 h-5 shrink-0" />
+                    <span className="whitespace-nowrap">605 47 49 30</span>
+                    <ArrowRight className="w-4 h-4 shrink-0 transition-transform group-hover:translate-x-1" />
+                  </a>
+
+                  <button
+                    id="hero-whatsapp-btn"
+                    type="button"
+                    onClick={handleWhatsApp}
+                    aria-describedby="hero-whatsapp-hint"
+                    className="flex flex-auto items-center justify-center gap-2 px-8 py-4 bg-[#25D366] hover:bg-[#1ebe5a] text-white font-bold rounded-xl transition-all cursor-pointer hover:scale-103 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-brand-sand/70 focus-visible:ring-offset-2 focus-visible:ring-offset-brand-black sm:whitespace-nowrap"
+                  >
+                    <img
+                      src="/Whatsapp-button.webp"
+                      alt=""
+                      aria-hidden="true"
+                      className="w-20 h-20 shrink-0 object-contain rounded"
+                    />
+                    <span>Contactar por WhatsApp</span>
+                  </button>
+                </div>
+
+                <p
+                  id="hero-whatsapp-hint"
+                  className="text-sm font-medium leading-snug text-brand-sand"
                 >
-                  <img src="/Whatsapp-button.webp" alt="WhatsApp" className="w-20 h-20 shrink-0 object-contain rounded" />
-                  <span>Contactar por WhatsApp</span>
-                </button>
+                  Envíanos origen, destino, fecha y fotos de los muebles por WhatsApp
+                </p>
               </div>
 
               <motion.p
