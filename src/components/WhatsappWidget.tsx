@@ -3,6 +3,8 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
+import { trackWhatsAppConversion } from "../lib/googleAds";
+
 const whatsappNumber = "34605474930";
 const whatsappMessage = "Hola, quiero informacion sobre sus servicios de mudanza.";
 const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
@@ -13,6 +15,7 @@ export default function WhatsappWidget() {
       href={whatsappUrl}
       target="_blank"
       rel="noopener noreferrer"
+      onClick={trackWhatsAppConversion}
       className="relative group transition-transform hover:scale-110 active:scale-95"
       aria-label="Contactar por WhatsApp"
     >

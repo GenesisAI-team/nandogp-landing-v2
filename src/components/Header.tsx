@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 import { Phone, Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
 import useBodyScrollLock from "../hooks/useBodyScrollLock";
+import { trackPhoneConversion, trackWhatsAppConversion } from "../lib/googleAds";
 
 interface HeaderProps {
   phone: string;
@@ -49,6 +50,7 @@ export default function Header({ phone }: HeaderProps) {
       "¡Hola NANDO-GP! Acabo de ver vuestra web y me gustaría preguntar por vuestras tarifas de mudanzas."
     );
     const num = phone.replace(/\s+/g, "").replace("+", "");
+    trackWhatsAppConversion();
     window.open(`https://wa.me/${num}?text=${text}`, "_blank");
   };
 
@@ -73,6 +75,7 @@ export default function Header({ phone }: HeaderProps) {
           {/* Mobile: phone link - grows to fill space between logo and hamburger */}
           <a
             href={phoneTel}
+            onClick={trackPhoneConversion}
             className="md:hidden flex-1 flex items-center justify-center mx-3 px-3 h-10 rounded-lg bg-brand-brown/60 border border-brand-peach/20 text-brand-sand hover:text-brand-white transition-all whitespace-nowrap"
           >
             <Phone className="w-5.5 h-5.5 text-brand-coral shrink-0 mr-1.5" />
@@ -96,6 +99,7 @@ export default function Header({ phone }: HeaderProps) {
           <a
             id="top-phone-call-btn"
             href={phoneTel}
+            onClick={trackPhoneConversion}
             className="hidden md:flex items-center space-x-1 md:space-x-2 lg:space-x-3 px-2 md:px-3 lg:px-5 py-2 lg:py-3 rounded-xl bg-brand-brown/50 border border-brand-peach/25 font-bold text-brand-sand hover:text-brand-white transition-all hover:scale-103 text-[0.65rem] md:text-xs lg:text-[2rem]"
           >
             <Phone className="text-brand-coral shrink-0 w-3 h-3 md:w-3.5 md:h-3.5 lg:w-7 lg:h-7" />
@@ -156,6 +160,7 @@ export default function Header({ phone }: HeaderProps) {
               <div className="shrink-0 pb-8 flex flex-col">
                 <a
                   href={phoneTel}
+                  onClick={trackPhoneConversion}
                   className="flex items-center justify-center gap-3 px-5 py-3.5 bg-gradient-to-r from-brand-terracotta to-brand-coral text-brand-white font-bold transition-all hover:scale-103"
                 >
                   <Phone className="w-6 h-6" />
