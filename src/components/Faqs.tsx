@@ -7,6 +7,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { HelpCircle, ChevronDown, ArrowRight, Phone } from "lucide-react";
 import { FAQ_DATA } from "../data";
+import { trackPhoneConversion, trackWhatsAppConversion } from "../lib/googleAds";
 
 export default function Faqs() {
   const [activeCategory, setActiveCategory] = useState<"todos" | "precios" | "seguridad" | "proceso">("todos");
@@ -14,6 +15,7 @@ export default function Faqs() {
   const [closingInstantly, setClosingInstantly] = useState<string | null>(null);
 
   const handleWhatsApp = () => {
+    trackWhatsAppConversion();
     const text = encodeURIComponent("¡Hola NANDO-GP! Me gustaría resolver una duda sobre vuestros servicios de mudanza.");
     window.open(`https://wa.me/34605474930?text=${text}`, "_blank");
   };
@@ -179,6 +181,7 @@ export default function Faqs() {
             <div className="flex flex-col sm:flex-row sm:gap-4 gap-2">
               <a
                 href="tel:+34605474930"
+                onClick={trackPhoneConversion}
                 className="flex items-center justify-center gap-3 px-8 py-4 bg-gradient-to-r from-brand-terracotta to-brand-coral hover:from-brand-coral hover:to-brand-terracotta text-brand-white font-bold rounded-xl shadow-xl transition-all hover:scale-103 cursor-pointer group"
               >
                 <Phone className="w-5 h-5 shrink-0" />

@@ -7,6 +7,7 @@ import { useState, useRef, useEffect, useCallback } from "react";
 import { motion, AnimatePresence, useInView } from "motion/react";
 import { ArrowRight, MapPin, Phone, ShieldCheck } from "lucide-react";
 import { preloadImage } from "../lib/preloadImages";
+import { trackPhoneConversion, trackWhatsAppConversion } from "../lib/googleAds";
 
 interface StackPhoto {
   id: number;
@@ -113,6 +114,7 @@ export default function Hero() {
   const activePhotoReady = readySources.has(activePhoto.url);
 
   const handleWhatsApp = () => {
+    trackWhatsAppConversion();
     const text = encodeURIComponent("¡Hola NANDO-GP! Acabo de ver vuestra web y me gustaría preguntar por vuestras tarifas de mudanzas.");
     window.open(`https://wa.me/34605474930?text=${text}`, "_blank");
   };
@@ -178,6 +180,7 @@ export default function Hero() {
                 <div className="flex flex-wrap gap-2 sm:gap-4">
                   <a
                     href="tel:+34605474930"
+                    onClick={trackPhoneConversion}
                     aria-label="Llamar por teléfono a NANDO-GP: 605 47 49 30"
                     className="flex flex-auto items-center justify-center gap-3 whitespace-nowrap px-8 py-4 bg-gradient-to-r from-brand-terracotta to-brand-coral hover:from-brand-coral hover:to-brand-terracotta text-brand-white font-bold rounded-xl shadow-xl transition-all hover:scale-103 cursor-pointer group focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-brand-sand/70 focus-visible:ring-offset-2 focus-visible:ring-offset-brand-black"
                   >

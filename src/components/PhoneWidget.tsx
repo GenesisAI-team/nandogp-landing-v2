@@ -4,6 +4,7 @@
  */
 
 import { PhoneCall } from "lucide-react";
+import { trackPhoneConversion } from "../lib/googleAds";
 
 const phoneNumber = "+34 605 47 49 30";
 
@@ -11,6 +12,7 @@ export default function PhoneWidget() {
   return (
     <a
       href={`tel:${phoneNumber}`}
+      onClick={trackPhoneConversion}
       className="relative group transition-transform hover:scale-110 active:scale-95"
       aria-label="Llamar por teléfono"
     >
